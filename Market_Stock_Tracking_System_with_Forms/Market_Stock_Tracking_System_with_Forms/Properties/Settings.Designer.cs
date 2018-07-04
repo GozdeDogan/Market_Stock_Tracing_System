@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TREX_STOCK_PROJECT.Properties
+namespace Market_Stock_Tracking_System_with_Forms.Properties
 {
 
 

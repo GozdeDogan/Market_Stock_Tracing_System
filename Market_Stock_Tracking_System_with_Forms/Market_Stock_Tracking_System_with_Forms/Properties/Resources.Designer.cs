@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TREX_STOCK_PROJECT.Properties
+namespace Market_Stock_Tracking_System_with_Forms.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace TREX_STOCK_PROJECT.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TREX_STOCK_PROJECT.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Market_Stock_Tracking_System_with_Forms.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
