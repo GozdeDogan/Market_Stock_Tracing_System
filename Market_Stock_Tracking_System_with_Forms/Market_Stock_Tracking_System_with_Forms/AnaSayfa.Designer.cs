@@ -28,86 +28,117 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaSayfa));
+            this.ListButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.welcome = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // ListButton
             // 
-            this.button1.Location = new System.Drawing.Point(46, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "List Products";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ListButton.Location = new System.Drawing.Point(300, 62);
+            this.ListButton.Name = "ListButton";
+            this.ListButton.Size = new System.Drawing.Size(115, 23);
+            this.ListButton.TabIndex = 0;
+            this.ListButton.Text = "List Products";
+            this.ListButton.UseVisualStyleBackColor = true;
+            this.ListButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // AddButton
             // 
-            this.button2.Location = new System.Drawing.Point(46, 80);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Add Products";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.AddButton.Location = new System.Drawing.Point(300, 119);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(115, 23);
+            this.AddButton.TabIndex = 1;
+            this.AddButton.Text = "Add Products";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // DeleteButton
             // 
-            this.button3.Location = new System.Drawing.Point(46, 125);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Delete Products";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.DeleteButton.Location = new System.Drawing.Point(300, 175);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(115, 23);
+            this.DeleteButton.TabIndex = 2;
+            this.DeleteButton.Text = "Delete Products";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // SearchButton
             // 
-            this.button4.Location = new System.Drawing.Point(46, 170);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Search Product";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.SearchButton.Location = new System.Drawing.Point(300, 236);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(115, 23);
+            this.SearchButton.TabIndex = 3;
+            this.SearchButton.Text = "Search Product";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // ExitButton
             // 
-            this.button5.Location = new System.Drawing.Point(215, 225);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(114, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Exit";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.ExitButton.Location = new System.Drawing.Point(426, 301);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(114, 23);
+            this.ExitButton.TabIndex = 4;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.button5_Click);
             // 
-            // Form1
+            // welcome
+            // 
+            this.welcome.AutoSize = true;
+            this.welcome.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.welcome.Location = new System.Drawing.Point(170, 18);
+            this.welcome.Name = "welcome";
+            this.welcome.Size = new System.Drawing.Size(278, 13);
+            this.welcome.TabIndex = 5;
+            this.welcome.Text = "Welcome to Market Stock Tracking Management System";
+            this.welcome.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.welcome.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 62);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 220);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // AnaSayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 330);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(573, 360);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.welcome);
+            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.SearchButton);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.ListButton);
+            this.Name = "AnaSayfa";
+            this.Text = "Main Page";
+            this.Load += new System.EventHandler(this.AnaSayfa_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button ListButton;
+        private System.Windows.Forms.Label welcome;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

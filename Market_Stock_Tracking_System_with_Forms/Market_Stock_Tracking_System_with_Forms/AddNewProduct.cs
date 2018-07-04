@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Market_Stock_Tracking_System_with_Forms
 {
-    public partial class AddProduct : Form
+    public partial class AddNewProduct : Form
     {
-        public AddProduct()
+        public AddNewProduct()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace Market_Stock_Tracking_System_with_Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

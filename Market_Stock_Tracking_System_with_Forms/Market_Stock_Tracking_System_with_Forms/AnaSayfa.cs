@@ -26,7 +26,8 @@ namespace Market_Stock_Tracking_System_with_Forms
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Form listProducts = new ListProducts();
+            listProducts.ShowDialog();
         }
 
         /// <summary>
@@ -38,7 +39,8 @@ namespace Market_Stock_Tracking_System_with_Forms
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Form addNewProduct = new AddNewProduct();
+            addNewProduct.ShowDialog();
         }
 
         /// <summary>
@@ -50,7 +52,8 @@ namespace Market_Stock_Tracking_System_with_Forms
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-
+            //Form deleteProduct = new DeleteProduct();
+            //deleteProduct.ShowDialog();
         }
 
         /// <summary>
@@ -62,7 +65,8 @@ namespace Market_Stock_Tracking_System_with_Forms
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-
+            //Form searchProduct = new SearchProduct();
+            //searchProduct.ShowDialog();
         }
 
         /// <summary>
@@ -74,7 +78,18 @@ namespace Market_Stock_Tracking_System_with_Forms
         /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Exited!");
             Application.Exit();
+        }
+
+        private void AnaSayfa_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
