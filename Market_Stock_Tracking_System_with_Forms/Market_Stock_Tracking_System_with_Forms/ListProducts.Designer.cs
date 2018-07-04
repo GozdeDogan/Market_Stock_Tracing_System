@@ -33,6 +33,7 @@
             this.ProductQuantity = new System.Windows.Forms.Label();
             this.ProductUnit = new System.Windows.Forms.Label();
             this.ProductsList = new System.Windows.Forms.TextBox();
+            this.TurnBackButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ProductID
@@ -84,11 +85,22 @@
             this.ProductsList.TabIndex = 5;
             this.ProductsList.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
+            // TurnBackButton
+            // 
+            this.TurnBackButton.Location = new System.Drawing.Point(334, 270);
+            this.TurnBackButton.Name = "TurnBackButton";
+            this.TurnBackButton.Size = new System.Drawing.Size(93, 23);
+            this.TurnBackButton.TabIndex = 6;
+            this.TurnBackButton.Text = "Turn Back";
+            this.TurnBackButton.UseVisualStyleBackColor = true;
+            this.TurnBackButton.Click += new System.EventHandler(this.TurnBackButton_Click);
+            // 
             // ListProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 254);
+            this.ClientSize = new System.Drawing.Size(445, 323);
+            this.Controls.Add(this.TurnBackButton);
             this.Controls.Add(this.ProductsList);
             this.Controls.Add(this.ProductUnit);
             this.Controls.Add(this.ProductQuantity);
@@ -107,5 +119,6 @@
         private System.Windows.Forms.Label ProductQuantity;
         private System.Windows.Forms.Label ProductUnit;
         private System.Windows.Forms.TextBox ProductsList;
+        private System.Windows.Forms.Button TurnBackButton;
     }
 }

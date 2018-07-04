@@ -78,5 +78,10 @@ namespace Market_Stock_Tracking_System_with_Forms
         {
 
         }
+
+        private void TurnBack_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }

@@ -37,11 +37,12 @@
             this.Unit = new System.Windows.Forms.Label();
             this.Quantity = new System.Windows.Forms.Label();
             this.UnitTypesListBox = new System.Windows.Forms.ListBox();
+            this.TurnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AddProductButton
             // 
-            this.AddProductButton.Location = new System.Drawing.Point(215, 258);
+            this.AddProductButton.Location = new System.Drawing.Point(215, 238);
             this.AddProductButton.Name = "AddProductButton";
             this.AddProductButton.Size = new System.Drawing.Size(118, 23);
             this.AddProductButton.TabIndex = 0;
@@ -125,11 +126,22 @@
             this.UnitTypesListBox.TabIndex = 8;
             this.UnitTypesListBox.SelectedIndexChanged += new System.EventHandler(this.UnitTypes_SelectedIndexChanged);
             // 
+            // TurnBack
+            // 
+            this.TurnBack.Location = new System.Drawing.Point(258, 289);
+            this.TurnBack.Name = "TurnBack";
+            this.TurnBack.Size = new System.Drawing.Size(75, 23);
+            this.TurnBack.TabIndex = 9;
+            this.TurnBack.Text = "Turn Back";
+            this.TurnBack.UseVisualStyleBackColor = true;
+            this.TurnBack.Click += new System.EventHandler(this.TurnBack_Click);
+            // 
             // AddNewProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 334);
+            this.ClientSize = new System.Drawing.Size(384, 350);
+            this.Controls.Add(this.TurnBack);
             this.Controls.Add(this.UnitTypesListBox);
             this.Controls.Add(this.Quantity);
             this.Controls.Add(this.Unit);
@@ -139,6 +151,7 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.IDTextBox);
             this.Controls.Add(this.AddProductButton);
+            //this.Name = "AddNewProduct";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +168,6 @@
         private System.Windows.Forms.Label Unit;
         private System.Windows.Forms.Label Quantity;
         private System.Windows.Forms.ListBox UnitTypesListBox;
+        private System.Windows.Forms.Button TurnBack;
     }
 }

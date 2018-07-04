@@ -89,6 +89,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>STOCK_CARDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="STOCK_CARDDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>STOCK_CARDDataSet1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddNewProduct.resx">
       <DependentUpon>AddNewProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +131,17 @@
     </None>
     <None Include="STOCK_CARDDataSet.xss">
       <DependentUpon>STOCK_CARDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="STOCK_CARDDataSet1.xsc">
+      <DependentUpon>STOCK_CARDDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="STOCK_CARDDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>STOCK_CARDDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="STOCK_CARDDataSet1.xss">
+      <DependentUpon>STOCK_CARDDataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

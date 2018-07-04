@@ -57,5 +57,16 @@ namespace Market_Stock_Tracking_System_with_Forms.Properties {
                 this["Ayar1"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-4HHEDN5\\SQLEXPRESS;Initial Catalog=STOCK_CARD;Persist Securit" +
+            "y Info=True;User ID=GozdeDogan")]
+        public string STOCK_CARDConnectionString1 {
+            get {
+                return ((string)(this["STOCK_CARDConnectionString1"]));
+            }
+        }
     }
 }
