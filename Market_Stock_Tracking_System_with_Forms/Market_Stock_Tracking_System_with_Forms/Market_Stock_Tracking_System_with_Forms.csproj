@@ -75,7 +75,7 @@
     <Compile Include="AddNewProduct.Designer.cs">
       <DependentUpon>AddNewProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="ListProducts.cs">
       <SubType>Form</SubType>
     </Compile>

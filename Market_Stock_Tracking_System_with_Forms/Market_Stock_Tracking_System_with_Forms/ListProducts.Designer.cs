@@ -28,97 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ProductID = new System.Windows.Forms.Label();
-            this.ProductName = new System.Windows.Forms.Label();
-            this.ProductQuantity = new System.Windows.Forms.Label();
-            this.ProductUnit = new System.Windows.Forms.Label();
-            this.ProductsList = new System.Windows.Forms.TextBox();
             this.TurnBackButton = new System.Windows.Forms.Button();
+            this.SortByID = new System.Windows.Forms.Button();
+            this.SortByName = new System.Windows.Forms.Button();
+            this.SortByQuantity = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // ProductID
-            // 
-            this.ProductID.AutoSize = true;
-            this.ProductID.Location = new System.Drawing.Point(21, 23);
-            this.ProductID.Name = "ProductID";
-            this.ProductID.Size = new System.Drawing.Size(58, 13);
-            this.ProductID.TabIndex = 1;
-            this.ProductID.Text = "Product ID";
-            this.ProductID.Click += new System.EventHandler(this.ProductID_Click);
-            // 
-            // ProductName
-            // 
-            this.ProductName.AutoSize = true;
-            this.ProductName.Location = new System.Drawing.Point(110, 23);
-            this.ProductName.Name = "ProductName";
-            this.ProductName.Size = new System.Drawing.Size(75, 13);
-            this.ProductName.TabIndex = 2;
-            this.ProductName.Text = "Product Name";
-            this.ProductName.Click += new System.EventHandler(this.ProductName_Click);
-            // 
-            // ProductQuantity
-            // 
-            this.ProductQuantity.AutoSize = true;
-            this.ProductQuantity.Location = new System.Drawing.Point(220, 23);
-            this.ProductQuantity.Name = "ProductQuantity";
-            this.ProductQuantity.Size = new System.Drawing.Size(86, 13);
-            this.ProductQuantity.TabIndex = 3;
-            this.ProductQuantity.Text = "Product Quantity";
-            this.ProductQuantity.Click += new System.EventHandler(this.ProductQuantity_Click);
-            // 
-            // ProductUnit
-            // 
-            this.ProductUnit.AutoSize = true;
-            this.ProductUnit.Location = new System.Drawing.Point(346, 23);
-            this.ProductUnit.Name = "ProductUnit";
-            this.ProductUnit.Size = new System.Drawing.Size(66, 13);
-            this.ProductUnit.TabIndex = 4;
-            this.ProductUnit.Text = "Product Unit";
-            this.ProductUnit.Click += new System.EventHandler(this.ProductUnit_Click);
-            // 
-            // ProductsList
-            // 
-            this.ProductsList.Location = new System.Drawing.Point(12, 39);
-            this.ProductsList.Multiline = true;
-            this.ProductsList.Name = "ProductsList";
-            this.ProductsList.Size = new System.Drawing.Size(415, 203);
-            this.ProductsList.TabIndex = 5;
-            this.ProductsList.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // TurnBackButton
             // 
-            this.TurnBackButton.Location = new System.Drawing.Point(334, 270);
+            this.TurnBackButton.Location = new System.Drawing.Point(12, 12);
             this.TurnBackButton.Name = "TurnBackButton";
-            this.TurnBackButton.Size = new System.Drawing.Size(93, 23);
-            this.TurnBackButton.TabIndex = 6;
+            this.TurnBackButton.Size = new System.Drawing.Size(100, 31);
+            this.TurnBackButton.TabIndex = 0;
             this.TurnBackButton.Text = "Turn Back";
             this.TurnBackButton.UseVisualStyleBackColor = true;
             this.TurnBackButton.Click += new System.EventHandler(this.TurnBackButton_Click);
+            // 
+            // SortByID
+            // 
+            this.SortByID.Location = new System.Drawing.Point(327, 12);
+            this.SortByID.Name = "SortByID";
+            this.SortByID.Size = new System.Drawing.Size(81, 31);
+            this.SortByID.TabIndex = 1;
+            this.SortByID.Text = "Sort by ID";
+            this.SortByID.UseVisualStyleBackColor = true;
+            // 
+            // SortByName
+            // 
+            this.SortByName.Location = new System.Drawing.Point(430, 12);
+            this.SortByName.Name = "SortByName";
+            this.SortByName.Size = new System.Drawing.Size(115, 31);
+            this.SortByName.TabIndex = 2;
+            this.SortByName.Text = "Sort by Name";
+            this.SortByName.UseVisualStyleBackColor = true;
+            // 
+            // SortByQuantity
+            // 
+            this.SortByQuantity.Location = new System.Drawing.Point(567, 12);
+            this.SortByQuantity.Name = "SortByQuantity";
+            this.SortByQuantity.Size = new System.Drawing.Size(108, 31);
+            this.SortByQuantity.TabIndex = 3;
+            this.SortByQuantity.Text = "Sort by Quantity";
+            this.SortByQuantity.UseVisualStyleBackColor = true;
             // 
             // ListProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 323);
+            this.ClientSize = new System.Drawing.Size(701, 397);
+            this.Controls.Add(this.SortByQuantity);
+            this.Controls.Add(this.SortByName);
+            this.Controls.Add(this.SortByID);
             this.Controls.Add(this.TurnBackButton);
-            this.Controls.Add(this.ProductsList);
-            this.Controls.Add(this.ProductUnit);
-            this.Controls.Add(this.ProductQuantity);
-            this.Controls.Add(this.ProductName);
-            this.Controls.Add(this.ProductID);
             this.Name = "ListProducts";
             this.Text = "ListProducts";
+            this.Load += new System.EventHandler(this.ListProducts_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label ProductID;
-        private System.Windows.Forms.Label ProductName;
-        private System.Windows.Forms.Label ProductQuantity;
-        private System.Windows.Forms.Label ProductUnit;
-        private System.Windows.Forms.TextBox ProductsList;
+
         private System.Windows.Forms.Button TurnBackButton;
+        private System.Windows.Forms.Button SortByID;
+        private System.Windows.Forms.Button SortByName;
+        private System.Windows.Forms.Button SortByQuantity;
     }
 }

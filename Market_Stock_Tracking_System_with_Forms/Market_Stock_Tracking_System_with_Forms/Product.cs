@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Market_Stock_Tracking_System_with_Forms
 {
@@ -58,4 +60,17 @@ namespace Market_Stock_Tracking_System_with_Forms
             return id.ToString() + " " + name + " " + quantity.ToString() + " " + unit;
         }
     }
+
+   /* [Table("STOCK_CARDS_TABLE")]
+    public class Product
+    {  
+        [Column(IsPrimaryKey = true)]
+        public int id { get => id; set => id = value; }
+        [Column]
+        public string name { get => name; set => name = value; }
+        [Column]
+        public string unit { get => unit; set => unit = value; }
+        [Column]
+        public int quantity { get => quantity; set => quantity = value; }
+    }*/
 }
