@@ -17,14 +17,16 @@ namespace Market_Stock_Tracking_System_with_Forms
         private StatusBar sb;
         private DataTable table;
         private List<Product> products;
+        private int DataTableSize;
+        DataGridView dataGridView = new DataGridView();
 
         public AnaSayfa()
         {
             InitializeComponent();
-            table = GetTable();
+            GetTable();
         }
 
-        public DataTable GetTable()
+        public void GetTable()
         {
             // Here we create a DataTable with four columns.
             table = new DataTable();
@@ -46,6 +48,7 @@ namespace Market_Stock_Tracking_System_with_Forms
 
             products = new List<Product>();
             Product temp = new Product();
+            int size = 0;
             while (dataReader.Read())
             {
                 temp.setID((int)dataReader.GetValue(0));
@@ -54,9 +57,11 @@ namespace Market_Stock_Tracking_System_with_Forms
                 temp.setQuantity((int)dataReader.GetValue(3));
 
                 table.Rows.Add(temp.getID(), temp.getName(), temp.getUnit(), temp.getQuantity());
+                size++;
 
             }
 
+            DataTableSize = size;
             /*int i = 0;
             foreach (DataRow row in table.Rows)
             {
@@ -69,9 +74,6 @@ namespace Market_Stock_Tracking_System_with_Forms
             command.Dispose();
             CloseConnection(conn);
 
-
-
-            return table;
         }
 
         public static SqlConnection DBConnection()
@@ -134,6 +136,16 @@ namespace Market_Stock_Tracking_System_with_Forms
             }
         }
 
+        private bool IsElementArr(List<Product> p, int id)
+        {
+            foreach (Product temp in p)
+            {
+                if (temp.getID() == id)
+                    return true;
+            }
+
+            return false;
+        }
 
 
         /// <summary>
@@ -143,12 +155,57 @@ namespace Market_Stock_Tracking_System_with_Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         {
-            Form listProducts = new ListProducts();
-            listProducts.ShowDialog();
-            this.Hide();
-        }
+            // Create a new ListView control.
+             ListView listView1 = new ListView();
+             listView1.Bounds = new Rectangle(new Point(254, 310), new Size(350, 324));
+
+             // Set the view to show details.
+             listView1.View = View.Details;
+             // Allow scrolbar
+             listView1.Scrollable = true;
+             // Allow the user to edit item text.
+             listView1.LabelEdit = true;
+             // Allow the user to rearrange columns.
+             listView1.AllowColumnReorder = true;
+             // Select the item and subitems when selection is made.
+             listView1.FullRowSelect = true;
+             // Display grid lines.
+             listView1.GridLines = true;
+             // Sort the items in the list in ascending order.
+             listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+
+
+             ListViewItem[] listViewItems = new ListViewItem[DataTableSize];
+
+             string[] strArr = new string[5];
+             int i = 0;
+             foreach (DataRow row in table.Rows)
+             {
+                 strArr[0] = table.Rows[i].Field<int>(0).ToString();
+                 strArr[1] = table.Rows[i].Field<string>(1);
+                 strArr[2] = table.Rows[i].Field<string>(2);
+                 strArr[3] = table.Rows[i].Field<int>(3).ToString();
+                 Console.WriteLine(">>>>>>>>>>>>>>>Product:" + strArr);
+                 listViewItems[i] = new ListViewItem(strArr);
+                 Console.WriteLine(">>>>>>>>>>>>>>>ITEM:" + listViewItems[i].ToString());
+                 i++;
+             }
+
+             // Create columns for the items and subitems.
+             // Width of -2 indicates auto-size.
+             listView1.Columns.Add("Product ID", -2, HorizontalAlignment.Left);
+             listView1.Columns.Add("Product Name", -2, HorizontalAlignment.Left);
+             listView1.Columns.Add("Product Unit", -2, HorizontalAlignment.Left);
+             listView1.Columns.Add("Product Quantity", -2, HorizontalAlignment.Center);
+
+             //Add the items to the ListView.
+             listView1.Items.AddRange(listViewItems);
+
+             // Add the ListView to the control collection.
+             this.Controls.Add(listView1);
+        }*/
 
 
         /// <summary>
@@ -205,12 +262,19 @@ namespace Market_Stock_Tracking_System_with_Forms
 
         private void AnaSayfa_Load(object sender, EventArgs e)
         {
+            // TODO: Bu kod satırı 'sTOCK_CARDDataSet.STOCK_CARDS_TABLE' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            this.sTOCK_CARDS_TABLETableAdapter.Fill(this.sTOCK_CARDDataSet.STOCK_CARDS_TABLE);
 
+            //dataGridView.DataSource = table;
+
+            this.AutoScroll = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            /*Form f = new Form();
+            f.AutoScroll = true;
+            f.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            f.VerticalScroll = */
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

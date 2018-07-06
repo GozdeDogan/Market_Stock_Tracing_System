@@ -163,7 +163,7 @@ namespace Market_Stock_Tracking_System_with_Forms
         {
             // Create a new ListView control.
             ListView listView1 = new ListView();
-            listView1.Bounds = new Rectangle(new Point(12, 61), new Size(677, 324));
+            listView1.Bounds = new Rectangle(new Point(240, 12), new Size(677, 324));
 
             // Set the view to show details.
             listView1.View = View.Details;
