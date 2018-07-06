@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaSayfa));
-            this.SearchButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,26 +47,22 @@
             this.sTOCKNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTOCKUNITDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTOCKQUANTITYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTOCKCARDSTABLEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sTOCK_CARDDataSet = new Market_Stock_Tracking_System_with_Forms.STOCK_CARDDataSet();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.sTOCK_CARDS_TABLETableAdapter = new Market_Stock_Tracking_System_with_Forms.STOCK_CARDDataSetTableAdapters.STOCK_CARDS_TABLETableAdapter();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.SearchProductIDBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTOCKCARDSTABLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTOCK_CARDDataSet)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // SearchButton
-            // 
-            this.SearchButton.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchButton.Location = new System.Drawing.Point(21, 377);
-            this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(170, 40);
-            this.SearchButton.TabIndex = 3;
-            this.SearchButton.Text = "Search Product";
-            this.SearchButton.UseVisualStyleBackColor = true;
-            this.SearchButton.Click += new System.EventHandler(this.button4_Click);
             // 
             // ExitButton
             // 
@@ -109,19 +104,29 @@
             // QuantityTextBox
             // 
             this.QuantityTextBox.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuantityTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.QuantityTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.QuantityTextBox.Location = new System.Drawing.Point(200, 197);
             this.QuantityTextBox.Name = "QuantityTextBox";
             this.QuantityTextBox.Size = new System.Drawing.Size(150, 23);
             this.QuantityTextBox.TabIndex = 13;
-            this.QuantityTextBox.Text = "Please enter Product Quantity";
             // 
             // UnitTypesListBox
             // 
             this.UnitTypesListBox.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitTypesListBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.UnitTypesListBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.UnitTypesListBox.FormattingEnabled = true;
             this.UnitTypesListBox.ItemHeight = 16;
+            this.UnitTypesListBox.Items.AddRange(new object[] {
+            "g",
+            "kg",
+            "ton",
+            "lt",
+            "km",
+            "m",
+            "cm",
+            "packet",
+            "bottle",
+            "box"});
             this.UnitTypesListBox.Location = new System.Drawing.Point(200, 140);
             this.UnitTypesListBox.Name = "UnitTypesListBox";
             this.UnitTypesListBox.Size = new System.Drawing.Size(150, 20);
@@ -130,22 +135,20 @@
             // NameTextBox
             // 
             this.NameTextBox.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.NameTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.NameTextBox.Location = new System.Drawing.Point(200, 80);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(150, 23);
             this.NameTextBox.TabIndex = 11;
-            this.NameTextBox.Text = "Please enter Product Name";
             // 
             // IDTextBox
             // 
             this.IDTextBox.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.IDTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.IDTextBox.Location = new System.Drawing.Point(200, 20);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.Size = new System.Drawing.Size(150, 23);
             this.IDTextBox.TabIndex = 10;
-            this.IDTextBox.Text = "Please enter Product ID";
             // 
             // AddProductButton
             // 
@@ -156,6 +159,7 @@
             this.AddProductButton.TabIndex = 9;
             this.AddProductButton.Text = "Add New Product";
             this.AddProductButton.UseVisualStyleBackColor = true;
+            this.AddProductButton.Click += new System.EventHandler(this.AddProductButton_Click);
             // 
             // Quantity
             // 
@@ -207,11 +211,12 @@
             this.sTOCKIDDataGridViewTextBoxColumn,
             this.sTOCKNAMEDataGridViewTextBoxColumn,
             this.sTOCKUNITDataGridViewTextBoxColumn,
-            this.sTOCKQUANTITYDataGridViewTextBoxColumn});
+            this.sTOCKQUANTITYDataGridViewTextBoxColumn,
+            this.Operation});
             this.dataGridView1.DataSource = this.sTOCKCARDSTABLEBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(229, 355);
+            this.dataGridView1.Location = new System.Drawing.Point(230, 395);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(467, 133);
+            this.dataGridView1.Size = new System.Drawing.Size(560, 133);
             this.dataGridView1.TabIndex = 8;
             // 
             // sTOCKIDDataGridViewTextBoxColumn
@@ -238,6 +243,11 @@
             this.sTOCKQUANTITYDataGridViewTextBoxColumn.HeaderText = "STOCK_QUANTITY";
             this.sTOCKQUANTITYDataGridViewTextBoxColumn.Name = "sTOCKQUANTITYDataGridViewTextBoxColumn";
             // 
+            // Operation
+            // 
+            this.Operation.HeaderText = "Operation";
+            this.Operation.Name = "Operation";
+            // 
             // sTOCKCARDSTABLEBindingSource
             // 
             this.sTOCKCARDSTABLEBindingSource.DataMember = "STOCK_CARDS_TABLE";
@@ -248,20 +258,69 @@
             this.sTOCK_CARDDataSet.DataSetName = "STOCK_CARDDataSet";
             this.sTOCK_CARDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // SearchButton
+            // 
+            this.SearchButton.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchButton.Location = new System.Drawing.Point(287, 10);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(170, 44);
+            this.SearchButton.TabIndex = 9;
+            this.SearchButton.Text = "Search Product";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(21, 395);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.TabIndex = 10;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(802, 25);
+            this.toolStrip1.TabIndex = 11;
+            this.toolStrip1.Text = "fillByToolStrip";
+            // 
             // sTOCK_CARDS_TABLETableAdapter
             // 
             this.sTOCK_CARDS_TABLETableAdapter.ClearBeforeFill = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightCyan;
+            this.panel2.Controls.Add(this.SearchProductIDBox);
+            this.panel2.Controls.Add(this.SearchButton);
+            this.panel2.Location = new System.Drawing.Point(236, 317);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(497, 67);
+            this.panel2.TabIndex = 12;
+            // 
+            // SearchProductIDBox
+            // 
+            this.SearchProductIDBox.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchProductIDBox.Location = new System.Drawing.Point(46, 20);
+            this.SearchProductIDBox.Name = "SearchProductIDBox";
+            this.SearchProductIDBox.Size = new System.Drawing.Size(171, 26);
+            this.SearchProductIDBox.TabIndex = 10;
             // 
             // AnaSayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(699, 500);
+            this.ClientSize = new System.Drawing.Size(802, 540);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ExitButton);
-            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.pictureBox1);
             //this.Name = "AnaSayfa";
             this.Text = "Market Stock Management System";
@@ -272,12 +331,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTOCKCARDSTABLEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTOCK_CARDDataSet)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
@@ -298,6 +359,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sTOCKNAMEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sTOCKUNITDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sTOCKQUANTITYDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Operation;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox SearchProductIDBox;
     }
 }
 

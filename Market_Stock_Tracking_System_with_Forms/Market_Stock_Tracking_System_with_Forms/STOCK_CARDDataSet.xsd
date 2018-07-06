@@ -63,7 +63,16 @@ SELECT STOCK_ID, STOCK_NAME, STOCK_UNIT, STOCK_QUANTITY FROM STOCK_CARDS_TABLE W
               <Mapping SourceColumn="STOCK_UNIT" DataSetColumn="STOCK_UNIT" />
               <Mapping SourceColumn="STOCK_QUANTITY" DataSetColumn="STOCK_QUANTITY" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="STOCK_CARDConnectionString (Settings)" DbObjectName="STOCK_CARD.dbo.STOCK_CARDS_TABLE" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT STOCK_ID, STOCK_NAME, STOCK_UNIT, STOCK_QUANTITY FROM dbo.STOCK_CARDS_TABLE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -73,7 +82,7 @@ SELECT STOCK_ID, STOCK_NAME, STOCK_UNIT, STOCK_QUANTITY FROM STOCK_CARDS_TABLE W
   <xs:element name="STOCK_CARDDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="STOCK_CARDDataSet" msprop:Generator_UserDSName="STOCK_CARDDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="STOCK_CARDS_TABLE" msprop:Generator_TableClassName="STOCK_CARDS_TABLEDataTable" msprop:Generator_TableVarName="tableSTOCK_CARDS_TABLE" msprop:Generator_TablePropName="STOCK_CARDS_TABLE" msprop:Generator_RowDeletingName="STOCK_CARDS_TABLERowDeleting" msprop:Generator_RowChangingName="STOCK_CARDS_TABLERowChanging" msprop:Generator_RowEvHandlerName="STOCK_CARDS_TABLERowChangeEventHandler" msprop:Generator_RowDeletedName="STOCK_CARDS_TABLERowDeleted" msprop:Generator_UserTableName="STOCK_CARDS_TABLE" msprop:Generator_RowChangedName="STOCK_CARDS_TABLERowChanged" msprop:Generator_RowEvArgName="STOCK_CARDS_TABLERowChangeEvent" msprop:Generator_RowClassName="STOCK_CARDS_TABLERow">
+        <xs:element name="STOCK_CARDS_TABLE" msprop:Generator_TableClassName="STOCK_CARDS_TABLEDataTable" msprop:Generator_TableVarName="tableSTOCK_CARDS_TABLE" msprop:Generator_RowChangedName="STOCK_CARDS_TABLERowChanged" msprop:Generator_TablePropName="STOCK_CARDS_TABLE" msprop:Generator_RowDeletingName="STOCK_CARDS_TABLERowDeleting" msprop:Generator_RowChangingName="STOCK_CARDS_TABLERowChanging" msprop:Generator_RowEvHandlerName="STOCK_CARDS_TABLERowChangeEventHandler" msprop:Generator_RowDeletedName="STOCK_CARDS_TABLERowDeleted" msprop:Generator_RowClassName="STOCK_CARDS_TABLERow" msprop:Generator_UserTableName="STOCK_CARDS_TABLE" msprop:Generator_RowEvArgName="STOCK_CARDS_TABLERowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="STOCK_ID" msprop:Generator_ColumnVarNameInTable="columnSTOCK_ID" msprop:Generator_ColumnPropNameInRow="STOCK_ID" msprop:Generator_ColumnPropNameInTable="STOCK_IDColumn" msprop:Generator_UserColumnName="STOCK_ID" type="xs:int" />
