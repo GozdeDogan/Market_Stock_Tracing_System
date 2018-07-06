@@ -32,6 +32,7 @@
             this.SortByID = new System.Windows.Forms.Button();
             this.SortByName = new System.Windows.Forms.Button();
             this.SortByQuantity = new System.Windows.Forms.Button();
+            this.ListProductsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TurnBackButton
@@ -71,11 +72,22 @@
             this.SortByQuantity.Text = "Sort by Quantity";
             this.SortByQuantity.UseVisualStyleBackColor = true;
             // 
+            // ListProductsButton
+            // 
+            this.ListProductsButton.Location = new System.Drawing.Point(144, 12);
+            this.ListProductsButton.Name = "ListProductsButton";
+            this.ListProductsButton.Size = new System.Drawing.Size(99, 30);
+            this.ListProductsButton.TabIndex = 4;
+            this.ListProductsButton.Text = "List Products";
+            this.ListProductsButton.UseVisualStyleBackColor = true;
+            this.ListProductsButton.Click += new System.EventHandler(this.ListProductsButton_Click);
+            // 
             // ListProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 397);
+            this.Controls.Add(this.ListProductsButton);
             this.Controls.Add(this.SortByQuantity);
             this.Controls.Add(this.SortByName);
             this.Controls.Add(this.SortByID);
@@ -93,5 +105,6 @@
         private System.Windows.Forms.Button SortByID;
         private System.Windows.Forms.Button SortByName;
         private System.Windows.Forms.Button SortByQuantity;
+        private System.Windows.Forms.Button ListProductsButton;
     }
 }

@@ -16,88 +16,19 @@ namespace Market_Stock_Tracking_System_with_Forms
         private StatusBar sb;
         private DataTable table;
         private List<Product> products;
+        private int DataTableSize;
 
         public ListProducts()
         {
             InitializeComponent();
 
-            table = GetTable();
+            GetTable();
 
-            Text = "ListView";
-            //Size = new Size(350, 250);
-
-            ColumnHeader id = new ColumnHeader();
-            id.Text = "Product ID";
-            id.Width = -1;
-            ColumnHeader name = new ColumnHeader();
-            name.Text = "Product Name";
-            id.Width = -1;
-            ColumnHeader unit = new ColumnHeader();
-            unit.Text = "Product Unit";
-            name.Width = -1;
-            ColumnHeader quantity = new ColumnHeader();
-            quantity.Text = "Product Quantity";
-
-            SuspendLayout();
-
-            ListView listView = new ListView();
-            listView.Bounds = new Rectangle(new Point(80, 80), new Size(350, 250));
-            listView.Parent = this;
-            listView.FullRowSelect = true;
-            listView.GridLines = true;
-            listView.AllowColumnReorder = true;
-            listView.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            listView.Columns.AddRange(new ColumnHeader[] { id, name, unit, quantity });
-            listView.ColumnClick += new ColumnClickEventHandler(ColumnClick);
-
-            string[] strArr = new string[5];
-            int i = 0;
-            foreach (DataRow row in table.Rows) { 
-                strArr[0] = table.Rows[i].Field<int>(0).ToString();
-                strArr[1] = table.Rows[i].Field<string>(1);
-                strArr[2] = table.Rows[i].Field<string>(2);
-                strArr[3] = table.Rows[i].Field<int>(3).ToString();
-                Console.WriteLine(">>>>>>>>>>>>>>>Product:" + strArr);
-                ListViewItem item = new ListViewItem(strArr);
-                Console.WriteLine(">>>>>>>>>>>>>>>ITEM:" + item.ToString());
-                listView.Items.Add(item);
-                i++;
-            }
-            int pageColumnSize = i;
-
-            listView.Dock = DockStyle.Fill;
-            listView.Click += new EventHandler(OnChanged);
-
-            sb = new StatusBar();
-            sb.Parent = this;
-            listView.View = View.Details;
-
-            ResumeLayout();
-
-            CenterToScreen();
-
-           /* Button btn = new Button();
-
-            btn.Text = "Turn Back";
-
-            btn.BackColor = SystemColors.ButtonFace;
-
-            //btn.Click += new EventHandler(btn_Click);
-
-            Point p = listView.Items[2].Position;
-
-            p.X += pageColumnSize;
-            p.Y += 30 * pageColumnSize;
-
-            btn.Location = p;
-
-            btn.Size = listView.Items[2].Bounds.Size;
-
-            listView.Controls.Add(btn);*/
+            //listView1_SelectedIndexChanged(null, null);
 
         }
 
-        public DataTable GetTable()
+        public void GetTable()
         {
             // Here we create a DataTable with four columns.
             table = new DataTable();
@@ -119,6 +50,7 @@ namespace Market_Stock_Tracking_System_with_Forms
 
             products = new List<Product>();
             Product temp = new Product();
+            int size = 0;
             while (dataReader.Read())
             {
                 temp.setID((int)dataReader.GetValue(0));
@@ -127,9 +59,11 @@ namespace Market_Stock_Tracking_System_with_Forms
                 temp.setQuantity((int)dataReader.GetValue(3));
                 
                 table.Rows.Add(temp.getID(), temp.getName(), temp.getUnit(), temp.getQuantity());
+                size++;
  
             }
 
+            DataTableSize = size;
             /*int i = 0;
             foreach (DataRow row in table.Rows)
             {
@@ -142,9 +76,6 @@ namespace Market_Stock_Tracking_System_with_Forms
             command.Dispose();
             CloseConnection(conn);
             
-
-
-            return table;
         }
 
         public static SqlConnection DBConnection()
@@ -226,6 +157,56 @@ namespace Market_Stock_Tracking_System_with_Forms
         private void TurnBackButton_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void ListProductsButton_Click(object sender, EventArgs e)
+        {
+            // Create a new ListView control.
+            ListView listView1 = new ListView();
+            listView1.Bounds = new Rectangle(new Point(12, 61), new Size(677, 324));
+
+            // Set the view to show details.
+            listView1.View = View.Details;
+            // Allow the user to edit item text.
+            listView1.LabelEdit = true;
+            // Allow the user to rearrange columns.
+            listView1.AllowColumnReorder = true;
+            // Select the item and subitems when selection is made.
+            listView1.FullRowSelect = true;
+            // Display grid lines.
+            listView1.GridLines = true;
+            // Sort the items in the list in ascending order.
+            listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+
+           
+            ListViewItem[] listViewItems = new ListViewItem[DataTableSize];
+
+            string[] strArr = new string[5];
+            int i = 0;
+            foreach (DataRow row in table.Rows)
+            {
+                strArr[0] = table.Rows[i].Field<int>(0).ToString();
+                strArr[1] = table.Rows[i].Field<string>(1);
+                strArr[2] = table.Rows[i].Field<string>(2);
+                strArr[3] = table.Rows[i].Field<int>(3).ToString();
+                Console.WriteLine(">>>>>>>>>>>>>>>Product:" + strArr);
+                listViewItems[i] = new ListViewItem(strArr);
+                Console.WriteLine(">>>>>>>>>>>>>>>ITEM:" + listViewItems[i].ToString());
+                i++;
+            }
+
+            // Create columns for the items and subitems.
+            // Width of -2 indicates auto-size.
+            listView1.Columns.Add("Product ID", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Product Name", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Product Unit", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Product Quantity", -2, HorizontalAlignment.Center);
+
+            //Add the items to the ListView.
+            listView1.Items.AddRange(listViewItems);
+
+            // Add the ListView to the control collection.
+            this.Controls.Add(listView1);
         }
     }
 }
