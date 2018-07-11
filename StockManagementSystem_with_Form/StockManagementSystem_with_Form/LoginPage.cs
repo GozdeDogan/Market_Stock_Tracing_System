@@ -16,6 +16,7 @@ namespace StockManagementSystem_with_Form
         public LoginPage()
         {
             InitializeComponent();
+            this.FormClosing += new FormClosingEventHandler(LoginPage_FormClosing);
         }
 
         SqlConnection connection = new SqlConnection("Data Source=DESKTOP-4HHEDN5; Initial Catalog=StockManagementSystemDatabase; User Id=GozdeDogan; password=26062016;");
@@ -71,7 +72,7 @@ namespace StockManagementSystem_with_Form
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult answer;
             string caption = "EXIT?";
 
@@ -85,9 +86,32 @@ namespace StockManagementSystem_with_Form
             }
         }
 
+        private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
+            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            DialogResult answer;
+            string caption = "EXIT?";
+
+            // Displays the MessageBox.
+
+            answer = MessageBox.Show("Are you sure?", caption, buttons);
+
+            if (answer == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Visible = true;
+                Application.Exit();
+            }
+            else
+            {
+                this.Visible = false;
+                this.ShowDialog();
+            }
+        }
+
         private void exit_picturebox_likebutton_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult answer;
             string caption = "EXIT?";
 

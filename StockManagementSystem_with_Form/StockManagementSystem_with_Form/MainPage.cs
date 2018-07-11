@@ -27,8 +27,7 @@ namespace StockManagementSystem_with_Form
             InitializeComponent();
             conn = DBUtils.DBConnection();
 
-            //DatabaseTable.GetTable(conn, cardTable, cardTableSize);
-
+            //this.FormClosing += new FormClosingEventHandler(MainPage_FormClosing);
             string sql = "SELECT * FROM Product_Card_Table";
 
             DBUtils.OpenConnection(conn);
@@ -275,6 +274,31 @@ namespace StockManagementSystem_with_Form
                 LoginPageForm.Show();
             }
         }
+
+        /*private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            DialogResult answer;
+            string caption = "EXIT?";
+
+            // Displays the MessageBox.
+
+            answer = MessageBox.Show("Are you sure?", caption, buttons);
+
+            if (answer == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Visible = true;
+                this.Close();
+                Form login = new LoginPage();
+                login.ShowDialog();
+
+            }
+            else
+            {
+                this.Visible = true;
+               // this.ShowDialog();
+            }
+        }*/
 
         private void MainPage_Load(object sender, EventArgs e)
         {
