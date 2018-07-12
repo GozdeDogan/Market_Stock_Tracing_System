@@ -35,13 +35,13 @@
             this.usernamelabel = new System.Windows.Forms.Label();
             this.passwordlabel = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
-            this.exit_picturebox_likebutton = new System.Windows.Forms.PictureBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.exit_picturebox_likebutton)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // username_textbox
@@ -102,16 +102,6 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // exit_picturebox_likebutton
-            // 
-            this.exit_picturebox_likebutton.Image = ((System.Drawing.Image)(resources.GetObject("exit_picturebox_likebutton.Image")));
-            this.exit_picturebox_likebutton.Location = new System.Drawing.Point(17, 9);
-            this.exit_picturebox_likebutton.Name = "exit_picturebox_likebutton";
-            this.exit_picturebox_likebutton.Size = new System.Drawing.Size(71, 71);
-            this.exit_picturebox_likebutton.TabIndex = 6;
-            this.exit_picturebox_likebutton.TabStop = false;
-            this.exit_picturebox_likebutton.Click += new System.EventHandler(this.exit_picturebox_likebutton_Click);
-            // 
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -126,7 +116,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panel1.Controls.Add(this.exit_picturebox_likebutton);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Location = new System.Drawing.Point(137, 228);
             this.panel1.Name = "panel1";
@@ -146,6 +136,15 @@
             this.panel2.Size = new System.Drawing.Size(412, 172);
             this.panel2.TabIndex = 9;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(14, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(74, 73);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,10 +158,10 @@
             this.MaximizeBox = false;
             this.Name = "LoginPage";
             this.Text = "LoginPage";
-            ((System.ComponentModel.ISupportInitialize)(this.exit_picturebox_likebutton)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,9 +175,9 @@
         private System.Windows.Forms.Label usernamelabel;
         private System.Windows.Forms.Label passwordlabel;
         private System.Windows.Forms.Button ExitButton;
-        private System.Windows.Forms.PictureBox exit_picturebox_likebutton;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

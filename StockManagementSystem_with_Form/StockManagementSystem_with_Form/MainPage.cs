@@ -21,13 +21,41 @@ namespace StockManagementSystem_with_Form
         SqlDataAdapter sAdapter;
         SqlCommandBuilder sBuilder;
         DataSet cardSet;
+        LoginPage login;
 
         public MainPage()
         {
             InitializeComponent();
             conn = DBUtils.DBConnection();
 
-            //this.FormClosing += new FormClosingEventHandler(MainPage_FormClosing);
+            this.FormClosed += new FormClosedEventHandler(MainPage_Closed);
+            this.FormClosing += new FormClosingEventHandler(MainPage_Closing);
+            string sql = "SELECT * FROM Product_Card_Table";
+
+            DBUtils.OpenConnection(conn);
+
+            sCommand = new SqlCommand(sql, conn);
+            sAdapter = new SqlDataAdapter(sCommand);
+            sBuilder = new SqlCommandBuilder(sAdapter);
+            cardSet = new DataSet();
+            sAdapter.Fill(cardSet, "Product_Card_Table");
+            cardTable = cardSet.Tables["Product_Card_Table"];
+
+            DBUtils.CloseConnection(conn);
+
+            DataGridView_ListElement.DataSource = cardSet.Tables["Product_Card_Table"];
+            DataGridView_ListElement.ReadOnly = true;
+            DataGridView_ListElement.ReadOnly = true;
+            DataGridView_ListElement.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        public MainPage(LoginPage login)
+        {
+            InitializeComponent();
+            conn = DBUtils.DBConnection();
+            this.login = login;
+            this.FormClosed += new FormClosedEventHandler(MainPage_Closed);
+            this.FormClosing += new FormClosingEventHandler(MainPage_Closing);
             string sql = "SELECT * FROM Product_Card_Table";
 
             DBUtils.OpenConnection(conn);
@@ -270,14 +298,18 @@ namespace StockManagementSystem_with_Form
             if (answer == System.Windows.Forms.DialogResult.Yes)
             {
                 Form LoginPageForm = new LoginPage();
-                this.Close();
                 LoginPageForm.Show();
+
+                this.Dispose();
+                this.Close();
+                /*login.Dispose();
+                login.Close();*/
             }
         }
 
-        /*private void MainPage_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainPage_Closing(object sender, FormClosingEventArgs e)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult answer;
             string caption = "EXIT?";
 
@@ -285,20 +317,34 @@ namespace StockManagementSystem_with_Form
 
             answer = MessageBox.Show("Are you sure?", caption, buttons);
 
-            if (answer == System.Windows.Forms.DialogResult.Yes)
+            if (answer == DialogResult.No)
             {
-                this.Visible = true;
-                this.Close();
-                Form login = new LoginPage();
-                login.ShowDialog();
+                e.Cancel = true;
+                /* this.Hide();
 
+                 LoginPage loginform = new LoginPage();
+                 loginform.Show();*/
+
+                this.WindowState = FormWindowState.Normal;
+
+                Console.WriteLine("\nclosing\n");
+                /*this.Visible = true;
+                this.Show();*/
             }
-            else
-            {
-                this.Visible = true;
-               // this.ShowDialog();
-            }
-        }*/
+        }
+
+        private void MainPage_Closed(object sender, FormClosedEventArgs e)
+        {
+            
+            Form LoginPageForm = new LoginPage(login);
+            LoginPageForm.Show();
+
+            this.Dispose();
+            this.Close();
+            /*login.Dispose();
+            login.Close();*/
+        }
+
 
         private void MainPage_Load(object sender, EventArgs e)
         {
