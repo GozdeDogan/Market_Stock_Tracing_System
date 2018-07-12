@@ -14,13 +14,14 @@ namespace StockManagementSystem_with_Form
     public partial class MainPage : Form
     {
         private DataTable cardTable;
-        //DataGridView dataGridView = new DataGridView();
+        DataSet cardSet;
+
         SqlConnection conn;
 
         SqlCommand sCommand;
         SqlDataAdapter sAdapter;
         SqlCommandBuilder sBuilder;
-        DataSet cardSet;
+
         LoginPage login;
 
         public MainPage()
@@ -30,6 +31,7 @@ namespace StockManagementSystem_with_Form
 
             this.FormClosed += new FormClosedEventHandler(MainPage_Closed);
             this.FormClosing += new FormClosingEventHandler(MainPage_Closing);
+
             string sql = "SELECT * FROM Product_Card_Table";
 
             DBUtils.OpenConnection(conn);
@@ -52,10 +54,14 @@ namespace StockManagementSystem_with_Form
         public MainPage(LoginPage login)
         {
             InitializeComponent();
+
             conn = DBUtils.DBConnection();
+
             this.login = login;
+
             this.FormClosed += new FormClosedEventHandler(MainPage_Closed);
             this.FormClosing += new FormClosingEventHandler(MainPage_Closing);
+
             string sql = "SELECT * FROM Product_Card_Table";
 
             DBUtils.OpenConnection(conn);
@@ -75,26 +81,6 @@ namespace StockManagementSystem_with_Form
             DataGridView_ListElement.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        // kullanmiyorum ?
-        private bool IsElementArr(int id, DataTable table)
-        {
-            string SearchByColumn = "ProductID=" + id;
-            DataRow[] hasRows = cardTable.Select(SearchByColumn);
-            Console.WriteLine("hasRows select");
-            if (hasRows.Length == 0)
-            {
-                Console.WriteLine("OKEY");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("NOT OKEY");
-                return false;
-            }
-
-        }
-
-
         private void AddNewProduct_Click(object sender, EventArgs e)
         {
             if (IDTextBox.Text == "")
@@ -111,60 +97,50 @@ namespace StockManagementSystem_with_Form
                 {
                     int parsedint = int.Parse(IDTextBox.Text);
                     Console.WriteLine(parsedint);
-                    /*string SearchByColumn = "ProductID=" + parsedint;
-                    DataRow[] hasRows = cardTable.Select(SearchByColumn);
-                    if (hasRows.Length == 0)
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("id", typeof(int));
+                    dt.Columns.Add("name", typeof(string));
+                    dt.Columns.Add("unit", typeof(string));
+                    dt.Columns.Add("quantity", typeof(int));
+                    size = 0;
+
+                    DBUtils.OpenConnection(conn);
+                    string cmd = "Select * from Product_Card_Table where ProductID=" + IDTextBox.Text + ";";
+
+                    SqlCommand command = new SqlCommand(cmd, conn);
+                    SqlDataReader dataReader = command.ExecuteReader();
+
+                    Product temp = new Product();
+                    while (dataReader.Read())
                     {
-                        Console.WriteLine("OKEY");
-                    }
-                    else
-                    {
-                        Console.WriteLine("NOT OKEY");
-                    }*/
+                        temp.setID((int)dataReader.GetValue(0));
+                        temp.setName(dataReader.GetValue(1).ToString());
+                        temp.setUnit(dataReader.GetValue(2).ToString());
+                        temp.setQuantity((int)dataReader.GetValue(3));
 
-                     DataTable dt = new DataTable();
-                     dt.Columns.Add("id", typeof(int));
-                     dt.Columns.Add("name", typeof(string));
-                     dt.Columns.Add("unit", typeof(string));
-                     dt.Columns.Add("quantity", typeof(int));
-                     size = 0;
-
-                     DBUtils.OpenConnection(conn);
-                     string cmd = "Select * from Product_Card_Table where ProductID=" + IDTextBox.Text + ";";
-
-                     SqlCommand command = new SqlCommand(cmd, conn);
-                     SqlDataReader dataReader = command.ExecuteReader();
-
-                     Product temp = new Product();
-                     while (dataReader.Read())
-                     {
-                         temp.setID((int)dataReader.GetValue(0));
-                         temp.setName(dataReader.GetValue(1).ToString());
-                         temp.setUnit(dataReader.GetValue(2).ToString());
-                         temp.setQuantity((int)dataReader.GetValue(3));
-
-                         if (temp.getID() == Int32.Parse(SearchElementTextBox.Text))
-                         {
-                             dt.Rows.Add(temp.getID(), temp.getName(), temp.getUnit(), temp.getQuantity());
-                             Console.WriteLine(dt.Rows[size].Field<int>(0) + "\t" + dt.Rows[size].Field<string>(1) + "\t"
-                                 + dt.Rows[size].Field<string>(2) + "\t" + dt.Rows[size].Field<int>(3));
-                             Console.WriteLine("size:" + size);
-                             size++;
-                         }
-                     }
-                     dataReader.Close();
-                     DBUtils.CloseConnection(conn);
+                        if (temp.getID() == Int32.Parse(SearchElementTextBox.Text))
+                        {
+                            dt.Rows.Add(temp.getID(), temp.getName(), temp.getUnit(), temp.getQuantity());
+                            Console.WriteLine(dt.Rows[size].Field<int>(0) + "\t" + dt.Rows[size].Field<string>(1) + "\t"
+                                + dt.Rows[size].Field<string>(2) + "\t" + dt.Rows[size].Field<int>(3));
+                            Console.WriteLine("size:" + size);
+                            size++;
+                        }
+                        }
+                        dataReader.Close();
+                        DBUtils.CloseConnection(conn);
 
                     if (size==0)
                     {
-                        //This is my insert query in which i am taking input from the user through windows forms  
                         string Query = "insert into Product_Card_Table(ProductID,ProductName,ProductUnit,ProductQuantity) values('" + this.IDTextBox.Text + "','" + this.NameTextBox.Text + "','" + this.UnitListComboBox.Text + "','" + this.QuantityTextBox.Text + "');";
-                        //This is command class which will handle the query and connection object.  
+
                         SqlCommand MyCommand = new SqlCommand(Query, conn);
                         DBUtils.OpenConnection(conn);
 
                         MyCommand.ExecuteNonQuery();
                         MessageBox.Show("Save product", "SUCCESS INSERT");
+
                         cardTable.Rows.Add(this.IDTextBox.Text, this.NameTextBox.Text, this.UnitListComboBox.Text, this.QuantityTextBox.Text);
                         result = 1;
                     }
@@ -182,7 +158,7 @@ namespace StockManagementSystem_with_Form
                 {
                     DBUtils.CloseConnection(conn);
                     FillDataGridView();
-                    //datagridview e ekleme
+
                     DataGridView_ListElement.DataSource = cardTable;
                     DataGridView_ListElement.Refresh();
 
@@ -196,7 +172,6 @@ namespace StockManagementSystem_with_Form
             }
         }
 
-
         private void SearchProduct_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
@@ -204,8 +179,10 @@ namespace StockManagementSystem_with_Form
             dt.Columns.Add("name", typeof(string));
             dt.Columns.Add("unit", typeof(string));
             dt.Columns.Add("quantity", typeof(int));
+
             int size = 0;
             int noChecked = 1;
+
             try
             {
                 DBUtils.OpenConnection(conn);
@@ -284,26 +261,21 @@ namespace StockManagementSystem_with_Form
             }
         }
 
-
         private void ExitButton_Click(object sender, EventArgs e)
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
             DialogResult answer;
             string caption = "EXIT?";
-
-            // Displays the MessageBox.
-
+            
             answer = MessageBox.Show("Are you sure?", caption, buttons);
 
-            if (answer == System.Windows.Forms.DialogResult.Yes)
+            if (answer == DialogResult.Yes)
             {
                 Form LoginPageForm = new LoginPage();
                 LoginPageForm.Show();
 
                 this.Dispose();
                 this.Close();
-                /*login.Dispose();
-                login.Close();*/
             }
         }
 
@@ -312,24 +284,14 @@ namespace StockManagementSystem_with_Form
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult answer;
             string caption = "EXIT?";
-
-            // Displays the MessageBox.
-
+            
             answer = MessageBox.Show("Are you sure?", caption, buttons);
 
             if (answer == DialogResult.No)
             {
                 e.Cancel = true;
-                /* this.Hide();
-
-                 LoginPage loginform = new LoginPage();
-                 loginform.Show();*/
-
                 this.WindowState = FormWindowState.Normal;
-
                 Console.WriteLine("\nclosing\n");
-                /*this.Visible = true;
-                this.Show();*/
             }
         }
 
@@ -341,8 +303,6 @@ namespace StockManagementSystem_with_Form
 
             this.Dispose();
             this.Close();
-            /*login.Dispose();
-            login.Close();*/
         }
 
 
@@ -359,7 +319,6 @@ namespace StockManagementSystem_with_Form
 
                 if (DataGridView_ListElement.SelectedCells.Count > 0)
                 {
-                    //MessageBox.Show(DataGridView_ListElement.Rows[DataGridView_ListElement.CurrentRow.Index].ToString());
                     int selectedrowindex = DataGridView_ListElement.SelectedCells[0].RowIndex;
 
                     DataGridViewRow selectedRow = DataGridView_ListElement.Rows[selectedrowindex];
@@ -411,27 +370,22 @@ namespace StockManagementSystem_with_Form
         {
             try
             {
-
                 MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
                 DialogResult answer;
                 string caption = "Same Product";
-
-                // Displays the MessageBox.
-
+                
                 answer = MessageBox.Show("Same Product, Same ID, Do you want to update this product?", caption, buttons);
 
                 if (answer == System.Windows.Forms.DialogResult.Yes)
                 {
-                    //This is my insert query in which i am taking input from the user through windows forms  
                     string Query = "update Product_Card_Table set ProductID='" + IDTextBox.Text
                        + "',ProductName='" + NameTextBox.Text + "',ProductUnit='" + UnitListComboBox.Text
                        + "',ProductQuantity='" + QuantityTextBox.Text + "' WHERE ProductID='" + IDTextBox.Text + "';";
 
-                    //This is command class which will handle the query and connection object.  
                     SqlCommand MyCommand = new SqlCommand(Query, conn);
                     DBUtils.OpenConnection(conn);
 
-                    MyCommand.ExecuteNonQuery();     // Here our query will be executed and data saved into the database.  
+                    MyCommand.ExecuteNonQuery();   
                     MessageBox.Show("Update product", "SUCCESS UPDATE");
                 } 
             }

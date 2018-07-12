@@ -15,6 +15,7 @@ namespace StockManagementSystem_with_Form
     {
         Form mainpage;
         LoginPage login;
+
         public LoginPage()
         {
             InitializeComponent();
@@ -48,10 +49,8 @@ namespace StockManagementSystem_with_Form
             }
             try
             {
-                // Sql bağlantı cümlemiz.
+                connection.Open(); 
 
-                connection.Open(); // Bağlantıyı aç.
-                               // Sorgumuz.
                 string sql = "SELECT * FROM StockManagementSystemDatabase.dbo.User_Password_Table WHERE username=@username AND password=@password";
                 SqlParameter prms1 = new SqlParameter("@username", username_textbox.Text);
                 SqlParameter prms2 = new SqlParameter("@password", password_textbox.Text);
@@ -64,8 +63,6 @@ namespace StockManagementSystem_with_Form
 
                 if (dt.Rows.Count > 0)
                 {
-                    //    Giriş gerçekleşti yaptırmak istediğiniz kodu burdan gerçekleştirebilirsiniz.
-                    //    Altta yeni form açma işlemi gerçekleştirilmiştir.
                     this.Hide();
                     mainpage = new MainPage(this);
                     mainpage.Show();
@@ -73,6 +70,8 @@ namespace StockManagementSystem_with_Form
                 else
                 {
                     MessageBox.Show("User not found in database");
+                    username_textbox.Clear();
+                    password_textbox.Clear();
                     connection.Close();
                 }
             }
@@ -87,9 +86,7 @@ namespace StockManagementSystem_with_Form
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult answer;
             string caption = "EXIT?";
-
-            // Displays the MessageBox.
-
+            
             answer = MessageBox.Show("Are you sure?", caption, buttons);
 
             if (answer == DialogResult.Yes)
@@ -110,30 +107,15 @@ namespace StockManagementSystem_with_Form
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult answer;
             string caption = "EXIT?";
-
-            // Displays the MessageBox.
-
+            
             answer = MessageBox.Show("Are you sure?", caption, buttons);
 
             if (answer == DialogResult.No)
             {
                 e.Cancel = true;
-                /* this.Hide();
-
-                 LoginPage loginform = new LoginPage();
-                 loginform.Show();*/
-
                 this.WindowState = FormWindowState.Normal;
-
                 Console.WriteLine("\nclosing\n");
-                /*this.Visible = true;
-                this.Show();*/
             }
-            /*else
-            {
-                this.Visible = true;
-               // this.ShowDialog();
-            }*/
         }
 
         private void LoginPage_Closed(object sender, FormClosedEventArgs e)
@@ -163,6 +145,5 @@ namespace StockManagementSystem_with_Form
                 Application.Exit();
             }
         }*/
-
     }
 }
