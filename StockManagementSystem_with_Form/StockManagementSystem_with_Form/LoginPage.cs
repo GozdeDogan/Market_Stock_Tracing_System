@@ -91,14 +91,28 @@ namespace StockManagementSystem_with_Form
 
             if (answer == DialogResult.Yes)
             {
-                login.Dispose();
-                login.Close();
+                if (login != null)
+                {
+                    login.Dispose();
+                    login.Close();
 
-                Console.WriteLine("\nclosed\n");
-                Application.Exit();
 
-                this.Dispose();
-                this.Close();
+                    Console.WriteLine("\nclosed\n");
+
+                    this.Dispose();
+                    this.Close();
+
+                    Application.Exit();
+                }
+                else
+                {
+                    Console.WriteLine("\nclosed\n");
+                    Application.Exit();
+
+                    this.Dispose();
+                    this.Close();
+                }
+
             }
         }
 
@@ -120,14 +134,28 @@ namespace StockManagementSystem_with_Form
 
         private void LoginPage_Closed(object sender, FormClosedEventArgs e)
         {
-            login.Dispose();
-            login.Close();
+            if (login != null)
+            {
+                login.Dispose();
+                login.Close();
 
-            Console.WriteLine("\nclosed\n");
-            Application.Exit();
 
-            this.Dispose();
-            this.Close();
+                Console.WriteLine("\nclosed\n");
+
+                this.Dispose();
+                this.Close();
+
+                Application.Exit();
+            }
+            else
+            {
+                Console.WriteLine("\nclosed\n");
+                Application.Exit();
+
+                this.Dispose();
+                this.Close();
+            }
+
         }
 
        /* private void exit_picturebox_likebutton_Click(object sender, EventArgs e)

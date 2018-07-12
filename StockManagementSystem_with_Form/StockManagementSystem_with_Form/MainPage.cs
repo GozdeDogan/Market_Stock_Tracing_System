@@ -199,7 +199,7 @@ namespace StockManagementSystem_with_Form
                     }
                     else /*if (ByNameRadioButton.Checked == true)*/
                     {
-                        cmd = "Select * from Product_Card_Table where ProductName=" + SearchElementTextBox.Text + ";";
+                        cmd = "Select * from Product_Card_Table where ProductName='" + SearchElementTextBox.Text + "';";
                     }
 
                     SqlCommand command = new SqlCommand(cmd, conn);
@@ -213,7 +213,14 @@ namespace StockManagementSystem_with_Form
                         temp.setUnit(dataReader.GetValue(2).ToString());
                         temp.setQuantity((int)dataReader.GetValue(3));
 
-                        if (temp.getID() == Int32.Parse(SearchElementTextBox.Text))
+                        if (ByIDRadioButton.Checked == true && temp.getID() == Int32.Parse(SearchElementTextBox.Text))
+                        {
+                            dt.Rows.Add(temp.getID(), temp.getName(), temp.getUnit(), temp.getQuantity());
+                            Console.WriteLine(dt.Rows[size].Field<int>(0) + "\t" + dt.Rows[size].Field<string>(1) + "\t"
+                                + dt.Rows[size].Field<string>(2) + "\t" + dt.Rows[size].Field<int>(3));
+                            size++;
+                        }
+                        else if (ByNameRadioButton.Checked == true && temp.getName() == SearchElementTextBox.Text.ToString())
                         {
                             dt.Rows.Add(temp.getID(), temp.getName(), temp.getUnit(), temp.getQuantity());
                             Console.WriteLine(dt.Rows[size].Field<int>(0) + "\t" + dt.Rows[size].Field<string>(1) + "\t"
@@ -239,7 +246,7 @@ namespace StockManagementSystem_with_Form
                 else
                 {
                     if (size == 0)
-                        MessageBox.Show("Product not found!", "Warning");
+                        MessageBox.Show("Product not found!", "Not Found");
                     else
                     {
                         string message = "";
@@ -376,7 +383,7 @@ namespace StockManagementSystem_with_Form
                 
                 answer = MessageBox.Show("Same Product, Same ID, Do you want to update this product?", caption, buttons);
 
-                if (answer == System.Windows.Forms.DialogResult.Yes)
+                if (answer == DialogResult.Yes)
                 {
                     string Query = "update Product_Card_Table set ProductID='" + IDTextBox.Text
                        + "',ProductName='" + NameTextBox.Text + "',ProductUnit='" + UnitListComboBox.Text
