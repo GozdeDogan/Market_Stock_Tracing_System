@@ -107,10 +107,10 @@ namespace StockManagementSystem_with_Form
                 else
                 {
                     Console.WriteLine("\nclosed\n");
+                    this.Dispose();
+                    //this.Close();
                     Application.Exit();
 
-                    this.Dispose();
-                    this.Close();
                 }
 
             }
