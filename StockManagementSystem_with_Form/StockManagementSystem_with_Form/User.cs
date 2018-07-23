@@ -37,7 +37,7 @@ namespace StockManagementSystem_with_Form
                 this.password = "invalid";
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return "User:\nusername: " + username + "\npassword: " + password;
         }

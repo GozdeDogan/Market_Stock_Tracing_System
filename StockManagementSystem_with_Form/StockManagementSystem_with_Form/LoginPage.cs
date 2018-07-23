@@ -32,7 +32,7 @@ namespace StockManagementSystem_with_Form
             this.login = login;
         }
 
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-4HHEDN5; Initial Catalog=StockManagementSystemDatabase; User Id=GozdeDogan; password=26062016;");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-JB2BDAR\\SQLEXPRESS; Initial Catalog=StockManagementSystemDatabase; User Id=sa; password=1234;");
 
         private void loginButton_Click(object sender, EventArgs e)
         {
@@ -51,7 +51,7 @@ namespace StockManagementSystem_with_Form
             {
                 connection.Open(); 
 
-                string sql = "SELECT * FROM StockManagementSystemDatabase.dbo.User_Password_Table WHERE username=@username AND password=@password";
+                string sql = "SELECT * FROM StockManagementSystemDatabase.dbo.Users_Table WHERE username=@username AND password=@password";
                 SqlParameter prms1 = new SqlParameter("@username", username_textbox.Text);
                 SqlParameter prms2 = new SqlParameter("@password", password_textbox.Text);
                 SqlCommand cmd = new SqlCommand(sql, connection);
@@ -157,21 +157,5 @@ namespace StockManagementSystem_with_Form
             }
 
         }
-
-       /* private void exit_picturebox_likebutton_Click(object sender, EventArgs e)
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult answer;
-            string caption = "EXIT?";
-
-            // Displays the MessageBox.
-
-            answer = MessageBox.Show("Are you sure?", caption, buttons);
-
-            if (answer == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }*/
     }
 }

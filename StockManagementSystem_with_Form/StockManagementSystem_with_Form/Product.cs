@@ -16,18 +16,22 @@ namespace StockManagementSystem_with_Form
         private string name;
         private string unit;
         private int quantity;
+        private int money;
+        private string moneyunit;
 
         public Product()
         {
 
         }
 
-        public Product(int id, string name, string unit, int quantity)
+        public Product(int id, string name, string unit, int quantity, int money, string moneyunit)
         {
             this.id = id;
             this.name = name;
             this.unit = unit;
             this.quantity = quantity;
+            this.money = money;
+            this.moneyunit = moneyunit;
         }
 
         public int getID()
@@ -72,6 +76,18 @@ namespace StockManagementSystem_with_Form
                 this.quantity = quantity;
             else
                 this.quantity = -1;
+        }
+
+        public int getMoney() { return money; }
+        public void setMoney(int money)
+        {
+            this.money = money;
+        }
+
+        public string getMoneyunit() { return moneyunit; }
+        public void setMoneyunit(string moneyunit)
+        {
+            this.moneyunit = moneyunit;
         }
 
         public override string ToString()

@@ -11,11 +11,11 @@ namespace StockManagementSystem_with_Form
     {
         public static SqlConnection DBConnection()
         {
-            string datasource = @"DESKTOP-4HHEDN5";
+            string datasource = @"DESKTOP-JB2BDAR\SQLEXPRESS";
 
             string database = "StockManagementSystemDatabase";
-            string username = "GozdeDogan";
-            string password = "26062016";
+            string username = "sa";
+            string password = "1234";
 
             string connString = @"Data Source=" + datasource + ";Initial Catalog="
                         + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;

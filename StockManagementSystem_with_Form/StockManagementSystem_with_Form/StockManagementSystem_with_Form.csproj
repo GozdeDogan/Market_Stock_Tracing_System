@@ -59,6 +59,13 @@
     <Compile Include="MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="MovePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovePage.Designer.cs">
+      <DependentUpon>MovePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MoveProduct.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovePage.resx">
+      <DependentUpon>MovePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
