@@ -62,18 +62,6 @@ namespace StockManagementSystem_with_Form
             DataGridView_ByID.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        /*private void FillDataGridView()
-        {
-            SqlDataAdapter da;
-            DataSet ds;
-            da = new SqlDataAdapter("Select * From StockManagementSystemDatabase.dbo.Move_Table", connection);
-            ds = new DataSet();
-            DBUtils.OpenConnection(connection);
-            da.Fill(ds, "StockManagementSystemDatabase.dbo.Move_Table");
-            DataGridView_ByID.DataSource = ds.Tables["StockManagementSystemDatabase.dbo.Move_Table"];
-            DBUtils.CloseConnection(connection);
-        }*/
-
         private void FillDataGridView()
         {
             string sqlstring = "Select * From StockManagementSystemDatabase.dbo.Move_Table WHERE MoveProductID='" + byID + "';";
@@ -93,7 +81,7 @@ namespace StockManagementSystem_with_Form
             try
             {
 
-                if (DataGridView_ByID.SelectedCells.Count >= 0)
+                if (DataGridView_ByID.SelectedCells.Count > 0)
                 {
                     int selectedrowindex = DataGridView_ByID.SelectedCells[0].RowIndex;
 
@@ -134,16 +122,6 @@ namespace StockManagementSystem_with_Form
             mainpage.Visible = true;
         }
 
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-            this.Close();
-
-            mainpage.Visible = true;
-        }
-
-
         private void ınsertToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -156,7 +134,7 @@ namespace StockManagementSystem_with_Form
                 MoveProductIDTextBox.Enabled = false;
 
                 turnbackButton.Visible = false;
-                pictureBox1.Visible = false;
+                TurnBackPictureBox.Visible = false;
             }
             catch (SqlException se)
             {
@@ -173,7 +151,8 @@ namespace StockManagementSystem_with_Form
             try
             {
                 string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity)" 
-                    + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeTextBox.Text + "','" + MoveDateTimePicker.Text + "','" + MoveQuantityTextBox.Text + "');";
+                    + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeComboBox.Text + "','" + MoveDateTimePicker.Value.ToString("yyyy-MM-dd") 
+                    + "','" + MoveQuantityTextBox.Text + "');";
                 SqlCommand command = new SqlCommand(sql, connection);
                 DBUtils.OpenConnection(connection);
                 command.ExecuteNonQuery();
@@ -199,7 +178,7 @@ namespace StockManagementSystem_with_Form
             InsertPanel.Visible = false;
             GridPanel.Visible = true;
             turnbackButton.Visible = true;
-            pictureBox1.Visible = true;
+            TurnBackPictureBox.Visible = true;
         }
 
         private void MovePage_Closing(object sender, FormClosingEventArgs e)
@@ -237,5 +216,12 @@ namespace StockManagementSystem_with_Form
 
         }
 
+        private void TurnBackPictureBox_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
+
+            mainpage.Visible = true;
+        }
     }
 }

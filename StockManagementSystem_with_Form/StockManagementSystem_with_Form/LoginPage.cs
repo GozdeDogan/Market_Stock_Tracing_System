@@ -81,12 +81,16 @@ namespace StockManagementSystem_with_Form
                     MessageBox.Show("User not found in database");
                     username_textbox.Clear();
                     password_textbox.Clear();
-                    connection.Close();
+                    //connection.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
