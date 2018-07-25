@@ -220,7 +220,7 @@ namespace StockManagementSystem_with_Form
 
         private void MovePage_Closed(object sender, FormClosedEventArgs e)
         {
-            DBUtils.CloseConnection(mainpage.getlogin().getConnection());
+            DBUtils.CloseConnection(mainpage.getlogin().getConnection()); //giris sayfasina doner
             mainpage.getlogin().Visible = true;
             mainpage.getlogin().getPasswordTextBox().Clear();
 
@@ -231,7 +231,7 @@ namespace StockManagementSystem_with_Form
             mainpage.Dispose();
             mainpage.Close();
 
-            /*DBUtils.CloseConnection(mainpage.getlogin().getConnection());
+            /*DBUtils.CloseConnection(mainpage.getlogin().getConnection()); //toptan ciksin diye, ust 3 satiri sil bunu yorumdan cikar
             mainpage.getlogin().Dispose();
             mainpage.getlogin().Close();*/
 

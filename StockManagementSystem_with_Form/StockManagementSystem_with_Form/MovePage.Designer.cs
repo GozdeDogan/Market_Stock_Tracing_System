@@ -46,6 +46,7 @@
             this.turnbackButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.InsertPanel = new System.Windows.Forms.Panel();
+            this.MoveDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.BackButton = new System.Windows.Forms.Button();
             this.InformationTextBox = new System.Windows.Forms.TextBox();
             this.MoveQuantityLabel = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.MoveProductIDTextBox = new System.Windows.Forms.TextBox();
             this.InsertButton = new System.Windows.Forms.Button();
             this.GridPanel = new System.Windows.Forms.Panel();
-            this.MoveDateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_ByID)).BeginInit();
             this.menu_byID_DataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource)).BeginInit();
@@ -69,9 +69,11 @@
             // 
             // DataGridView_ByID
             // 
+            this.DataGridView_ByID.AllowUserToAddRows = false;
             this.DataGridView_ByID.AllowUserToDeleteRows = false;
             this.DataGridView_ByID.AllowUserToOrderColumns = true;
             this.DataGridView_ByID.AutoGenerateColumns = false;
+            this.DataGridView_ByID.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DataGridView_ByID.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.DataGridView_ByID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_ByID.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -81,10 +83,11 @@
             this.moveQuantityDataGridViewTextBoxColumn});
             this.DataGridView_ByID.ContextMenuStrip = this.menu_byID_DataGridView;
             this.DataGridView_ByID.DataSource = this.moveTableBindingSource;
-            this.DataGridView_ByID.Location = new System.Drawing.Point(6, 11);
+            this.DataGridView_ByID.Location = new System.Drawing.Point(4, 11);
             this.DataGridView_ByID.Name = "DataGridView_ByID";
             this.DataGridView_ByID.ReadOnly = true;
-            this.DataGridView_ByID.Size = new System.Drawing.Size(451, 223);
+            this.DataGridView_ByID.RowHeadersWidth = 20;
+            this.DataGridView_ByID.Size = new System.Drawing.Size(447, 223);
             this.DataGridView_ByID.TabIndex = 0;
             // 
             // moveProductIDDataGridViewTextBoxColumn
@@ -162,9 +165,9 @@
             // ProductTextBox
             // 
             this.ProductTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.ProductTextBox.Location = new System.Drawing.Point(8, 12);
+            this.ProductTextBox.Location = new System.Drawing.Point(8, 18);
             this.ProductTextBox.Name = "ProductTextBox";
-            this.ProductTextBox.Size = new System.Drawing.Size(451, 26);
+            this.ProductTextBox.Size = new System.Drawing.Size(459, 26);
             this.ProductTextBox.TabIndex = 2;
             // 
             // turnbackButton
@@ -172,7 +175,7 @@
             this.turnbackButton.BackColor = System.Drawing.Color.RoyalBlue;
             this.turnbackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.turnbackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.turnbackButton.Location = new System.Drawing.Point(203, 298);
+            this.turnbackButton.Location = new System.Drawing.Point(234, 301);
             this.turnbackButton.Name = "turnbackButton";
             this.turnbackButton.Size = new System.Drawing.Size(140, 39);
             this.turnbackButton.TabIndex = 3;
@@ -183,7 +186,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(122, 298);
+            this.pictureBox1.Location = new System.Drawing.Point(134, 297);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(72, 49);
             this.pictureBox1.TabIndex = 4;
@@ -204,10 +207,20 @@
             this.InsertPanel.Controls.Add(this.MoveTypeTextBox);
             this.InsertPanel.Controls.Add(this.MoveProductIDTextBox);
             this.InsertPanel.Controls.Add(this.InsertButton);
-            this.InsertPanel.Location = new System.Drawing.Point(56, 44);
+            this.InsertPanel.Location = new System.Drawing.Point(69, 47);
             this.InsertPanel.Name = "InsertPanel";
             this.InsertPanel.Size = new System.Drawing.Size(349, 293);
             this.InsertPanel.TabIndex = 5;
+            // 
+            // MoveDateTimePicker
+            // 
+            this.MoveDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.MoveDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.MoveDateTimePicker.Location = new System.Drawing.Point(201, 98);
+            this.MoveDateTimePicker.Name = "MoveDateTimePicker";
+            this.MoveDateTimePicker.Size = new System.Drawing.Size(127, 26);
+            this.MoveDateTimePicker.TabIndex = 12;
+            this.MoveDateTimePicker.Value = new System.DateTime(2018, 7, 25, 12, 37, 46, 0);
             // 
             // BackButton
             // 
@@ -264,7 +277,7 @@
             // 
             this.MoveProductIDLabel.AutoSize = true;
             this.MoveProductIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveProductIDLabel.Location = new System.Drawing.Point(31, 12);
+            this.MoveProductIDLabel.Location = new System.Drawing.Point(29, 12);
             this.MoveProductIDLabel.Name = "MoveProductIDLabel";
             this.MoveProductIDLabel.Size = new System.Drawing.Size(132, 20);
             this.MoveProductIDLabel.TabIndex = 6;
@@ -312,29 +325,20 @@
             this.GridPanel.Controls.Add(this.DataGridView_ByID);
             this.GridPanel.Location = new System.Drawing.Point(8, 47);
             this.GridPanel.Name = "GridPanel";
-            this.GridPanel.Size = new System.Drawing.Size(469, 244);
+            this.GridPanel.Size = new System.Drawing.Size(459, 244);
             this.GridPanel.TabIndex = 6;
-            // 
-            // MoveDateTimePicker
-            // 
-            this.MoveDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.MoveDateTimePicker.Location = new System.Drawing.Point(201, 98);
-            this.MoveDateTimePicker.Name = "MoveDateTimePicker";
-            this.MoveDateTimePicker.Size = new System.Drawing.Size(127, 26);
-            this.MoveDateTimePicker.TabIndex = 12;
-            this.MoveDateTimePicker.Value = new System.DateTime(2018, 7, 25, 12, 37, 46, 0);
             // 
             // MovePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(478, 343);
-            this.Controls.Add(this.GridPanel);
-            this.Controls.Add(this.InsertPanel);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(469, 343);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.turnbackButton);
+            this.Controls.Add(this.GridPanel);
+            this.Controls.Add(this.InsertPanel);
             this.Controls.Add(this.ProductTextBox);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
