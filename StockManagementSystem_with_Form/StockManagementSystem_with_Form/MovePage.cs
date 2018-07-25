@@ -16,6 +16,7 @@ namespace StockManagementSystem_with_Form
         SqlConnection connection;
         string byID;
         string product;
+        int SizeMoves = 0;
 
         public MovePage(SqlConnection connection, int id, string product)
         {
@@ -24,12 +25,17 @@ namespace StockManagementSystem_with_Form
             byID = id.ToString();
             this.product = product;
 
+            InsertPanel.Visible = false;
+            GridPanel.Visible = true;
         }
 
         private void MovePage_Load(object sender, EventArgs e)
         {
             ProductTextBox.Text = product;
             ProductTextBox.Enabled = false;
+            
+            InsertPanel.Visible = false;
+            GridPanel.Visible = true;
 
             string sql = "SELECT * FROM StockManagementSystemDatabase.dbo.Move_Table WHERE MoveProductID='" + byID +"';";
 
@@ -73,6 +79,7 @@ namespace StockManagementSystem_with_Form
             da.Fill(ds, "StockManagementSystemDatabase.dbo.Move_Table");
             DataGridView_ByID.DataSource = ds.Tables["StockManagementSystemDatabase.dbo.Move_Table"];
             DBUtils.CloseConnection(connection);
+            SizeMoves = DataGridView_ByID.RowCount;
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,7 +87,7 @@ namespace StockManagementSystem_with_Form
             try
             {
 
-                if (DataGridView_ByID.SelectedCells.Count > 0)
+                if (DataGridView_ByID.SelectedCells.Count >= 0)
                 {
                     int selectedrowindex = DataGridView_ByID.SelectedCells[0].RowIndex;
 
@@ -89,9 +96,9 @@ namespace StockManagementSystem_with_Form
                     MoveProduct temp = new MoveProduct(Convert.ToInt32(selectedRow.Cells[0].Value), selectedRow.Cells[1].Value.ToString(), 
                         Convert.ToDateTime(selectedRow.Cells[2].Value), Convert.ToInt32(selectedRow.Cells[3].Value));
 
-                    string sql = "DELETE FROM StockManagementSystemDatabase.dbo.Move_Table WHERE MoveProductID=@MoveProductID";
+                    string sql = "DELETE FROM StockManagementSystemDatabase.dbo.Move_Table WHERE MoveDate=@MoveDate";
                     SqlCommand command = new SqlCommand(sql, connection);
-                    command.Parameters.AddWithValue("@MoveProductID", temp.getMoveProductID());
+                    command.Parameters.AddWithValue("@MoveDate", temp.getMoveDate());
                     DBUtils.OpenConnection(connection);
                     command.ExecuteNonQuery();
                     DBUtils.CloseConnection(connection);
@@ -112,49 +119,22 @@ namespace StockManagementSystem_with_Form
             }
         }
 
-        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                if (DataGridView_ByID.SelectedCells.Count > 0)
-                {
-                    int selectedrowindex = DataGridView_ByID.SelectedCells[0].RowIndex;
-
-                    DataGridViewRow selectedRow = DataGridView_ByID.Rows[selectedrowindex];
-
-                    MoveProduct temp = new MoveProduct(Convert.ToInt32(selectedRow.Cells[0].Value), selectedRow.Cells[1].Value.ToString(),
-                        Convert.ToDateTime(selectedRow.Cells[2].Value), Convert.ToInt32(selectedRow.Cells[3].Value));
-
-                    string Query = "update StockManagementSystemDatabase.dbo.Product_Cards_Table set MoveType='" + selectedRow.Cells[1].Value.ToString() 
-                        + "',MoveDate='" + selectedRow.Cells[2].Value.ToString() + "',MoveQuantity='" + selectedRow.Cells[3].Value
-                        + "' WHERE MoveProductID=@MoveProductID;";
-
-                    SqlCommand MyCommand = new SqlCommand(Query, connection);
 
 
-                    MyCommand.Parameters.AddWithValue("@MoveProductID", selectedRow.Cells[0].Value.ToString());
-
-                    DBUtils.OpenConnection(connection);
-                    MyCommand.ExecuteNonQuery();
-                    DBUtils.CloseConnection(connection);
-                    MessageBox.Show("Product move updated!", "SUCCESS UPDATED");
-
-                }
-                else
-                    MessageBox.Show("Please, select the element to update!", "SELECT UPDATE ELEMENT");
-            }
-            catch (SqlException se)
-            {
-                MessageBox.Show(se.ToString(), "ERROR");
-            }
-            finally
-            {
-                DBUtils.CloseConnection(connection);
-                FillDataGridView();
-            }
-        }
-
+        /**
+         * 
+         * Menüye bir insert butonu ekle!
+         * Insert butonuna basıldığında son satır daha önceden yok ise ekle!
+         * Bunu da ilk datagridview i güncelleyen fillDataGridView metodunda bir index tutarak gerçekleştir.
+         * Böylece her zaman size elinde olacak. (Size değişkenini yukarıda tanımla)
+         * DataGriddVew özelliklerinden eklemeyi etkinleştir.
+         * Kullanıcı satıra yazıa yazabilsin. 
+         * Yazıp sağa tıklayıp insert dediği zaman veriyi hem datagridview e hem database e ekle!
+         * 
+         * MainPage de yapılan update işlemlerini test et!
+         * Çıkış yaparken login page de iki defa soruyor, onu da kontrol et!
+         * 
+         */
         private void turnbackButton_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -165,6 +145,65 @@ namespace StockManagementSystem_with_Form
         {
             this.Dispose();
             this.Close();
+        }
+
+
+        private void ınsertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridPanel.Visible = false;
+                InsertPanel.Visible = true;
+                InformationTextBox.Text = "Insert element!";
+                InformationTextBox.Enabled = false;
+                MoveProductIDTextBox.Text = byID;
+                MoveProductIDTextBox.Enabled = false;
+
+                turnbackButton.Visible = false;
+                pictureBox1.Visible = false;
+            }
+            catch (SqlException se)
+            {
+                MessageBox.Show(se.ToString(), "ERROR");
+            }
+            finally
+            {
+                FillDataGridView();
+            }
+        }
+
+        private void InsertButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity)" 
+                    + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeTextBox.Text + "','" + MoveDateTextBox.Text + "','" + MoveQuantityTextBox.Text + "');";
+                SqlCommand command = new SqlCommand(sql, connection);
+                DBUtils.OpenConnection(connection);
+                command.ExecuteNonQuery();
+                DBUtils.CloseConnection(connection);
+                MessageBox.Show("Product Move added!", "SUCCESS INSERTED");
+                
+            }
+            catch (SqlException se)
+            {
+                MessageBox.Show(se.ToString(), "ERROR");
+            }
+            finally
+            {
+                DBUtils.CloseConnection(connection);
+                FillDataGridView();
+                InsertPanel.Visible = false;
+                GridPanel.Visible = true;
+            }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            InsertPanel.Visible = false;
+            GridPanel.Visible = true;
+            turnbackButton.Visible = true;
+            pictureBox1.Visible = true;
         }
     }
 }

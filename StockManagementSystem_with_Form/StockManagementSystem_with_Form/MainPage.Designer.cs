@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.UpdateThisButton = new System.Windows.Forms.Button();
             this.MoneyUnitComboBox = new System.Windows.Forms.ComboBox();
@@ -50,26 +50,27 @@
             this.ByIDRadioButton = new System.Windows.Forms.RadioButton();
             this.SearchProduct = new System.Windows.Forms.Button();
             this.SearchElementTextBox = new System.Windows.Forms.TextBox();
-            this.ExitButton = new System.Windows.Forms.Button();
+            this.TurnBackButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.UpdateDataGridView = new System.Windows.Forms.Button();
             this.DataGridView_Products = new System.Windows.Forms.DataGridView();
-            this.UpdateSelectButton = new System.Windows.Forms.Button();
-            this.stockManagementSystemDatabaseDataSet = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
-            this.productCardsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.product_Cards_TableTableAdapter = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter();
             this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productMoneyUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productCardsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stockManagementSystemDatabaseDataSet = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
+            this.UpdateSelectButton = new System.Windows.Forms.Button();
+            this.product_Cards_TableTableAdapter = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter();
+            this.InformationTextBox = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPagePicture)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Products)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productCardsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -87,6 +88,7 @@
             this.panel2.Controls.Add(this.NameTextBox);
             this.panel2.Controls.Add(this.IDTextBox);
             this.panel2.Controls.Add(this.AddNewProduct);
+            this.panel2.Controls.Add(this.InformationTextBox);
             this.panel2.Location = new System.Drawing.Point(204, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(516, 189);
@@ -291,18 +293,18 @@
             this.SearchElementTextBox.Size = new System.Drawing.Size(144, 26);
             this.SearchElementTextBox.TabIndex = 0;
             // 
-            // ExitButton
+            // TurnBackButton
             // 
-            this.ExitButton.BackColor = System.Drawing.Color.DarkRed;
-            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ExitButton.Location = new System.Drawing.Point(33, 449);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(100, 38);
-            this.ExitButton.TabIndex = 4;
-            this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = false;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            this.TurnBackButton.BackColor = System.Drawing.Color.DarkRed;
+            this.TurnBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TurnBackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TurnBackButton.Location = new System.Drawing.Point(12, 449);
+            this.TurnBackButton.Name = "TurnBackButton";
+            this.TurnBackButton.Size = new System.Drawing.Size(147, 41);
+            this.TurnBackButton.TabIndex = 4;
+            this.TurnBackButton.Text = "Turn Back";
+            this.TurnBackButton.UseVisualStyleBackColor = false;
+            this.TurnBackButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // DeleteButton
             // 
@@ -336,14 +338,14 @@
             this.DataGridView_Products.AllowUserToOrderColumns = true;
             this.DataGridView_Products.AutoGenerateColumns = false;
             this.DataGridView_Products.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridView_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_Products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productIDDataGridViewTextBoxColumn,
@@ -362,33 +364,6 @@
             this.DataGridView_Products.ShowRowErrors = false;
             this.DataGridView_Products.Size = new System.Drawing.Size(550, 184);
             this.DataGridView_Products.TabIndex = 1;
-            // 
-            // UpdateSelectButton
-            // 
-            this.UpdateSelectButton.BackColor = System.Drawing.Color.Goldenrod;
-            this.UpdateSelectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.UpdateSelectButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.UpdateSelectButton.Location = new System.Drawing.Point(12, 372);
-            this.UpdateSelectButton.Name = "UpdateSelectButton";
-            this.UpdateSelectButton.Size = new System.Drawing.Size(147, 57);
-            this.UpdateSelectButton.TabIndex = 8;
-            this.UpdateSelectButton.Text = "Update Select Product";
-            this.UpdateSelectButton.UseVisualStyleBackColor = false;
-            this.UpdateSelectButton.Click += new System.EventHandler(this.UpdateSelectButton_Click);
-            // 
-            // stockManagementSystemDatabaseDataSet
-            // 
-            this.stockManagementSystemDatabaseDataSet.DataSetName = "StockManagementSystemDatabaseDataSet";
-            this.stockManagementSystemDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productCardsTableBindingSource
-            // 
-            this.productCardsTableBindingSource.DataMember = "Product_Cards_Table";
-            this.productCardsTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet;
-            // 
-            // product_Cards_TableTableAdapter
-            // 
-            this.product_Cards_TableTableAdapter.ClearBeforeFill = true;
             // 
             // productIDDataGridViewTextBoxColumn
             // 
@@ -438,6 +413,42 @@
             this.productMoneyUnitDataGridViewTextBoxColumn.ReadOnly = true;
             this.productMoneyUnitDataGridViewTextBoxColumn.Width = 85;
             // 
+            // productCardsTableBindingSource
+            // 
+            this.productCardsTableBindingSource.DataMember = "Product_Cards_Table";
+            this.productCardsTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet;
+            // 
+            // stockManagementSystemDatabaseDataSet
+            // 
+            this.stockManagementSystemDatabaseDataSet.DataSetName = "StockManagementSystemDatabaseDataSet";
+            this.stockManagementSystemDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // UpdateSelectButton
+            // 
+            this.UpdateSelectButton.BackColor = System.Drawing.Color.Goldenrod;
+            this.UpdateSelectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.UpdateSelectButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.UpdateSelectButton.Location = new System.Drawing.Point(12, 372);
+            this.UpdateSelectButton.Name = "UpdateSelectButton";
+            this.UpdateSelectButton.Size = new System.Drawing.Size(147, 57);
+            this.UpdateSelectButton.TabIndex = 8;
+            this.UpdateSelectButton.Text = "Update Select Product";
+            this.UpdateSelectButton.UseVisualStyleBackColor = false;
+            this.UpdateSelectButton.Click += new System.EventHandler(this.UpdateSelectButton_Click);
+            // 
+            // product_Cards_TableTableAdapter
+            // 
+            this.product_Cards_TableTableAdapter.ClearBeforeFill = true;
+            // 
+            // InformationTextBox
+            // 
+            this.InformationTextBox.BackColor = System.Drawing.Color.White;
+            this.InformationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.InformationTextBox.Location = new System.Drawing.Point(376, 37);
+            this.InformationTextBox.Name = "InformationTextBox";
+            this.InformationTextBox.Size = new System.Drawing.Size(133, 26);
+            this.InformationTextBox.TabIndex = 15;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,7 +459,7 @@
             this.Controls.Add(this.UpdateDataGridView);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.DataGridView_Products);
-            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.TurnBackButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MainPagePicture);
             this.Controls.Add(this.panel2);
@@ -463,8 +474,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Products)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productCardsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -481,7 +492,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button SearchProduct;
         private System.Windows.Forms.TextBox SearchElementTextBox;
-        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button TurnBackButton;
         private System.Windows.Forms.TextBox QuantityTextBox;
         private System.Windows.Forms.Label ProductMoneyUnit;
         private System.Windows.Forms.Button DeleteButton;
@@ -503,6 +514,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productQuantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productMoneyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productMoneyUnitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox InformationTextBox;
         //private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet;
     }
 }
