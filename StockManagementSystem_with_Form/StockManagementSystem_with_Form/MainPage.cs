@@ -333,13 +333,6 @@ namespace StockManagementSystem_with_Form
 
             this.Dispose();
             this.Close();
-
-            /*this.Dispose();
-            this.Close();
-
-            DBUtils.CloseConnection(login.getConnection());
-            login.Dispose();
-            login.Close();*/
         }
 
 
@@ -347,6 +340,7 @@ namespace StockManagementSystem_with_Form
         {
             // TODO: Bu kod satırı 'stockManagementSystemDatabaseDataSet.Product_Cards_Table' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
             this.product_Cards_TableTableAdapter.Fill(this.stockManagementSystemDatabaseDataSet.Product_Cards_Table);
+
             FillDataGridView();
             UnitListComboBox.SelectedIndex = 0;
             MoneyUnitComboBox.SelectedIndex = 0;
@@ -362,7 +356,6 @@ namespace StockManagementSystem_with_Form
         {
             try
             {
-
                 if (DataGridView_Products.SelectedCells.Count > 0)
                 {
                     int selectedrowindex = DataGridView_Products.SelectedCells[0].RowIndex;
@@ -380,7 +373,6 @@ namespace StockManagementSystem_with_Form
                     command.ExecuteNonQuery();
                     DBUtils.CloseConnection(conn);
                     MessageBox.Show("Product deleted!", "SUCCESS DELETED");
-
                 }
                 else
                     MessageBox.Show("Please, select the element to delete!", "SELECT DELETE ELEMENT");
@@ -458,7 +450,6 @@ namespace StockManagementSystem_with_Form
         {
             try
             {
-
                 if (DataGridView_Products.SelectedCells.Count >= 0)
                 {
                     int selectedrowindex = DataGridView_Products.SelectedCells[0].RowIndex;

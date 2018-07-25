@@ -123,7 +123,6 @@ namespace StockManagementSystem_with_Form
                     this.Dispose();
                     //this.Close();
                     Application.Exit();
-
                 }
 
             }
@@ -168,7 +167,6 @@ namespace StockManagementSystem_with_Form
                 this.Dispose();
                 this.Close();
             }
-
         }
     }
 }

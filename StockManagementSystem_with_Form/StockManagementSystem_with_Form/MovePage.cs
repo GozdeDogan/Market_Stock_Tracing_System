@@ -80,7 +80,6 @@ namespace StockManagementSystem_with_Form
         {
             try
             {
-
                 if (DataGridView_ByID.SelectedCells.Count > 0)
                 {
                     int selectedrowindex = DataGridView_ByID.SelectedCells[0].RowIndex;
