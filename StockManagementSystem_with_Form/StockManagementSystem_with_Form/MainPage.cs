@@ -50,7 +50,6 @@ namespace StockManagementSystem_with_Form
 
             DataGridView_Products.DataSource = cardSet.Tables["StockManagementSystemDatabase.dbo.Product_Cards_Table"];
             DataGridView_Products.ReadOnly = true;
-            DataGridView_Products.ReadOnly = true;
             DataGridView_Products.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
@@ -83,9 +82,16 @@ namespace StockManagementSystem_with_Form
 
             DataGridView_Products.DataSource = cardSet.Tables["StockManagementSystemDatabase.dbo.Product_Cards_Table"];
             DataGridView_Products.ReadOnly = true;
-            DataGridView_Products.ReadOnly = true;
             DataGridView_Products.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+
+
+        public SqlConnection getConnection()
+        {
+            return conn;
+        }
+
+        public LoginPage getlogin() { return login; }
 
         private void AddNewProduct_Click(object sender, EventArgs e)
         {
@@ -289,41 +295,25 @@ namespace StockManagementSystem_with_Form
                             i++;
                         }
                         
-                        MovePage movepage = new MovePage(conn, Convert.ToInt32(SearchElementTextBox.Text), message);
+                        MovePage movepage = new MovePage(conn, Convert.ToInt32(SearchElementTextBox.Text), message, this);
 
                         DataGridView_Products.DataSource = cardTable;
                         SearchElementTextBox.Clear();
 
                         movepage.Show();
+                        this.Visible = false;
                     }
                 }
                 FillDataGridView();
             }
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
-            DialogResult answer;
-            string caption = "Turn Back?";
-            
-            answer = MessageBox.Show("Are you sure?", caption, buttons);
-
-            if (answer == DialogResult.Yes)
-            {
-                Form LoginPageForm = new LoginPage();
-                LoginPageForm.Show();
-
-                this.Dispose();
-                this.Close();
-            }
-        }
 
         private void MainPage_Closing(object sender, FormClosingEventArgs e)
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult answer;
-            string caption = "Turn Back?";
+            string caption = "TURN BACK?";
             
             answer = MessageBox.Show("Are you sure?", caption, buttons);
 
@@ -337,12 +327,19 @@ namespace StockManagementSystem_with_Form
 
         private void MainPage_Closed(object sender, FormClosedEventArgs e)
         {
-            
-            Form LoginPageForm = new LoginPage(login);
-            LoginPageForm.Show();
+            DBUtils.CloseConnection(login.getConnection());
+            login.Visible = true;
+            login.getPasswordTextBox().Clear();
 
             this.Dispose();
             this.Close();
+
+            /*this.Dispose();
+            this.Close();
+
+            DBUtils.CloseConnection(login.getConnection());
+            login.Dispose();
+            login.Close();*/
         }
 
 
@@ -493,6 +490,16 @@ namespace StockManagementSystem_with_Form
 
                 FillDataGridView();
             }
+        }
+
+        private void TurnBackButton_Click(object sender, EventArgs e)
+        {
+            DBUtils.CloseConnection(login.getConnection());
+            login.Visible = true;
+            login.getPasswordTextBox().Clear();
+            
+            this.Dispose();
+            this.Close();
         }
     }
 }

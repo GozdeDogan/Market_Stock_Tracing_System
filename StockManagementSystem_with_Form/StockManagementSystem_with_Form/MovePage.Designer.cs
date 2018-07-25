@@ -46,18 +46,18 @@
             this.turnbackButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.InsertPanel = new System.Windows.Forms.Panel();
+            this.BackButton = new System.Windows.Forms.Button();
             this.InformationTextBox = new System.Windows.Forms.TextBox();
             this.MoveQuantityLabel = new System.Windows.Forms.Label();
             this.MoveDateLabel = new System.Windows.Forms.Label();
             this.MoveTypeLabel = new System.Windows.Forms.Label();
             this.MoveProductIDLabel = new System.Windows.Forms.Label();
             this.MoveQuantityTextBox = new System.Windows.Forms.TextBox();
-            this.MoveDateTextBox = new System.Windows.Forms.TextBox();
             this.MoveTypeTextBox = new System.Windows.Forms.TextBox();
             this.MoveProductIDTextBox = new System.Windows.Forms.TextBox();
             this.InsertButton = new System.Windows.Forms.Button();
             this.GridPanel = new System.Windows.Forms.Panel();
-            this.BackButton = new System.Windows.Forms.Button();
+            this.MoveDateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_ByID)).BeginInit();
             this.menu_byID_DataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource)).BeginInit();
@@ -193,6 +193,7 @@
             // InsertPanel
             // 
             this.InsertPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.InsertPanel.Controls.Add(this.MoveDateTimePicker);
             this.InsertPanel.Controls.Add(this.BackButton);
             this.InsertPanel.Controls.Add(this.InformationTextBox);
             this.InsertPanel.Controls.Add(this.MoveQuantityLabel);
@@ -200,7 +201,6 @@
             this.InsertPanel.Controls.Add(this.MoveTypeLabel);
             this.InsertPanel.Controls.Add(this.MoveProductIDLabel);
             this.InsertPanel.Controls.Add(this.MoveQuantityTextBox);
-            this.InsertPanel.Controls.Add(this.MoveDateTextBox);
             this.InsertPanel.Controls.Add(this.MoveTypeTextBox);
             this.InsertPanel.Controls.Add(this.MoveProductIDTextBox);
             this.InsertPanel.Controls.Add(this.InsertButton);
@@ -208,6 +208,19 @@
             this.InsertPanel.Name = "InsertPanel";
             this.InsertPanel.Size = new System.Drawing.Size(349, 293);
             this.InsertPanel.TabIndex = 5;
+            // 
+            // BackButton
+            // 
+            this.BackButton.BackColor = System.Drawing.Color.Teal;
+            this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.BackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackButton.Location = new System.Drawing.Point(33, 223);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(87, 34);
+            this.BackButton.TabIndex = 11;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // InformationTextBox
             // 
@@ -265,14 +278,6 @@
             this.MoveQuantityTextBox.Size = new System.Drawing.Size(127, 26);
             this.MoveQuantityTextBox.TabIndex = 5;
             // 
-            // MoveDateTextBox
-            // 
-            this.MoveDateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveDateTextBox.Location = new System.Drawing.Point(201, 98);
-            this.MoveDateTextBox.Name = "MoveDateTextBox";
-            this.MoveDateTextBox.Size = new System.Drawing.Size(127, 26);
-            this.MoveDateTextBox.TabIndex = 4;
-            // 
             // MoveTypeTextBox
             // 
             this.MoveTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -310,18 +315,15 @@
             this.GridPanel.Size = new System.Drawing.Size(469, 244);
             this.GridPanel.TabIndex = 6;
             // 
-            // BackButton
+            // MoveDateTimePicker
             // 
-            this.BackButton.BackColor = System.Drawing.Color.Teal;
-            this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.BackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BackButton.Location = new System.Drawing.Point(33, 223);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(87, 34);
-            this.BackButton.TabIndex = 11;
-            this.BackButton.Text = "Back";
-            this.BackButton.UseVisualStyleBackColor = false;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            this.MoveDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.MoveDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.MoveDateTimePicker.Location = new System.Drawing.Point(201, 98);
+            this.MoveDateTimePicker.Name = "MoveDateTimePicker";
+            this.MoveDateTimePicker.Size = new System.Drawing.Size(127, 26);
+            this.MoveDateTimePicker.TabIndex = 12;
+            this.MoveDateTimePicker.Value = new System.DateTime(2018, 7, 25, 12, 37, 46, 0);
             // 
             // MovePage
             // 
@@ -329,8 +331,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(478, 343);
-            this.Controls.Add(this.InsertPanel);
             this.Controls.Add(this.GridPanel);
+            this.Controls.Add(this.InsertPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.turnbackButton);
             this.Controls.Add(this.ProductTextBox);
@@ -375,12 +377,12 @@
         private System.Windows.Forms.Label MoveTypeLabel;
         private System.Windows.Forms.Label MoveProductIDLabel;
         private System.Windows.Forms.TextBox MoveQuantityTextBox;
-        private System.Windows.Forms.TextBox MoveDateTextBox;
         private System.Windows.Forms.TextBox MoveTypeTextBox;
         private System.Windows.Forms.TextBox MoveProductIDTextBox;
         private System.Windows.Forms.ToolStripMenuItem ınsertToolStripMenuItem;
         private System.Windows.Forms.Panel GridPanel;
         private System.Windows.Forms.TextBox InformationTextBox;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.DateTimePicker MoveDateTimePicker;
     }
 }

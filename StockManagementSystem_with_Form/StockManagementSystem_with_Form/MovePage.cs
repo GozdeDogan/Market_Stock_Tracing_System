@@ -17,13 +17,19 @@ namespace StockManagementSystem_with_Form
         string byID;
         string product;
         int SizeMoves = 0;
+        MainPage mainpage;
 
-        public MovePage(SqlConnection connection, int id, string product)
+        public MovePage(SqlConnection connection, int id, string product, MainPage mainpage)
         {
             InitializeComponent();
+
+            this.FormClosed += new FormClosedEventHandler(MovePage_Closed);
+            this.FormClosing += new FormClosingEventHandler(MovePage_Closing);
+
             this.connection = connection;
             byID = id.ToString();
             this.product = product;
+            this.mainpage = mainpage;
 
             InsertPanel.Visible = false;
             GridPanel.Visible = true;
@@ -120,31 +126,21 @@ namespace StockManagementSystem_with_Form
         }
 
 
-
-        /**
-         * 
-         * Menüye bir insert butonu ekle!
-         * Insert butonuna basıldığında son satır daha önceden yok ise ekle!
-         * Bunu da ilk datagridview i güncelleyen fillDataGridView metodunda bir index tutarak gerçekleştir.
-         * Böylece her zaman size elinde olacak. (Size değişkenini yukarıda tanımla)
-         * DataGriddVew özelliklerinden eklemeyi etkinleştir.
-         * Kullanıcı satıra yazıa yazabilsin. 
-         * Yazıp sağa tıklayıp insert dediği zaman veriyi hem datagridview e hem database e ekle!
-         * 
-         * MainPage de yapılan update işlemlerini test et!
-         * Çıkış yaparken login page de iki defa soruyor, onu da kontrol et!
-         * 
-         */
         private void turnbackButton_Click(object sender, EventArgs e)
         {
             this.Dispose();
             this.Close();
+
+            mainpage.Visible = true;
         }
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Dispose();
             this.Close();
+
+            mainpage.Visible = true;
         }
 
 
@@ -177,7 +173,7 @@ namespace StockManagementSystem_with_Form
             try
             {
                 string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity)" 
-                    + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeTextBox.Text + "','" + MoveDateTextBox.Text + "','" + MoveQuantityTextBox.Text + "');";
+                    + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeTextBox.Text + "','" + MoveDateTimePicker.Text + "','" + MoveQuantityTextBox.Text + "');";
                 SqlCommand command = new SqlCommand(sql, connection);
                 DBUtils.OpenConnection(connection);
                 command.ExecuteNonQuery();
@@ -205,5 +201,41 @@ namespace StockManagementSystem_with_Form
             turnbackButton.Visible = true;
             pictureBox1.Visible = true;
         }
+
+        private void MovePage_Closing(object sender, FormClosingEventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult answer;
+            string caption = "EXIT?";
+
+            answer = MessageBox.Show("Are you sure?", caption, buttons);
+
+            if (answer == DialogResult.No)
+            {
+                e.Cancel = true;
+                this.WindowState = FormWindowState.Normal;
+                Console.WriteLine("\nclosing\n");
+            }
+        }
+
+        private void MovePage_Closed(object sender, FormClosedEventArgs e)
+        {
+            DBUtils.CloseConnection(mainpage.getlogin().getConnection());
+            mainpage.getlogin().Visible = true;
+            mainpage.getlogin().getPasswordTextBox().Clear();
+
+            this.Dispose();
+            this.Close();
+
+            DBUtils.CloseConnection(mainpage.getConnection());
+            mainpage.Dispose();
+            mainpage.Close();
+
+            /*DBUtils.CloseConnection(mainpage.getlogin().getConnection());
+            mainpage.getlogin().Dispose();
+            mainpage.getlogin().Close();*/
+
+        }
+
     }
 }

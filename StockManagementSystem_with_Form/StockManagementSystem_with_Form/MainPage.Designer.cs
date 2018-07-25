@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.UpdateThisButton = new System.Windows.Forms.Button();
             this.MoneyUnitComboBox = new System.Windows.Forms.ComboBox();
@@ -44,13 +44,13 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.AddNewProduct = new System.Windows.Forms.Button();
+            this.InformationTextBox = new System.Windows.Forms.TextBox();
             this.MainPagePicture = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ByNameRadioButton = new System.Windows.Forms.RadioButton();
             this.ByIDRadioButton = new System.Windows.Forms.RadioButton();
             this.SearchProduct = new System.Windows.Forms.Button();
             this.SearchElementTextBox = new System.Windows.Forms.TextBox();
-            this.TurnBackButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.UpdateDataGridView = new System.Windows.Forms.Button();
             this.DataGridView_Products = new System.Windows.Forms.DataGridView();
@@ -64,7 +64,7 @@
             this.stockManagementSystemDatabaseDataSet = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
             this.UpdateSelectButton = new System.Windows.Forms.Button();
             this.product_Cards_TableTableAdapter = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter();
-            this.InformationTextBox = new System.Windows.Forms.TextBox();
+            this.TurnBackButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPagePicture)).BeginInit();
             this.panel1.SuspendLayout();
@@ -227,6 +227,15 @@
             this.AddNewProduct.UseVisualStyleBackColor = false;
             this.AddNewProduct.Click += new System.EventHandler(this.AddNewProduct_Click);
             // 
+            // InformationTextBox
+            // 
+            this.InformationTextBox.BackColor = System.Drawing.Color.White;
+            this.InformationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.InformationTextBox.Location = new System.Drawing.Point(376, 37);
+            this.InformationTextBox.Name = "InformationTextBox";
+            this.InformationTextBox.Size = new System.Drawing.Size(133, 26);
+            this.InformationTextBox.TabIndex = 15;
+            // 
             // MainPagePicture
             // 
             this.MainPagePicture.Image = ((System.Drawing.Image)(resources.GetObject("MainPagePicture.Image")));
@@ -293,19 +302,6 @@
             this.SearchElementTextBox.Size = new System.Drawing.Size(144, 26);
             this.SearchElementTextBox.TabIndex = 0;
             // 
-            // TurnBackButton
-            // 
-            this.TurnBackButton.BackColor = System.Drawing.Color.DarkRed;
-            this.TurnBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TurnBackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TurnBackButton.Location = new System.Drawing.Point(12, 449);
-            this.TurnBackButton.Name = "TurnBackButton";
-            this.TurnBackButton.Size = new System.Drawing.Size(147, 41);
-            this.TurnBackButton.TabIndex = 4;
-            this.TurnBackButton.Text = "Turn Back";
-            this.TurnBackButton.UseVisualStyleBackColor = false;
-            this.TurnBackButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
             // DeleteButton
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.Red;
@@ -338,14 +334,14 @@
             this.DataGridView_Products.AllowUserToOrderColumns = true;
             this.DataGridView_Products.AutoGenerateColumns = false;
             this.DataGridView_Products.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DataGridView_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_Products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productIDDataGridViewTextBoxColumn,
@@ -440,14 +436,18 @@
             // 
             this.product_Cards_TableTableAdapter.ClearBeforeFill = true;
             // 
-            // InformationTextBox
+            // TurnBackButton
             // 
-            this.InformationTextBox.BackColor = System.Drawing.Color.White;
-            this.InformationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.InformationTextBox.Location = new System.Drawing.Point(376, 37);
-            this.InformationTextBox.Name = "InformationTextBox";
-            this.InformationTextBox.Size = new System.Drawing.Size(133, 26);
-            this.InformationTextBox.TabIndex = 15;
+            this.TurnBackButton.BackColor = System.Drawing.Color.DarkRed;
+            this.TurnBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TurnBackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TurnBackButton.Location = new System.Drawing.Point(23, 450);
+            this.TurnBackButton.Name = "TurnBackButton";
+            this.TurnBackButton.Size = new System.Drawing.Size(127, 39);
+            this.TurnBackButton.TabIndex = 9;
+            this.TurnBackButton.Text = "Turn Back";
+            this.TurnBackButton.UseVisualStyleBackColor = false;
+            this.TurnBackButton.Click += new System.EventHandler(this.TurnBackButton_Click);
             // 
             // MainPage
             // 
@@ -455,11 +455,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(725, 510);
+            this.Controls.Add(this.TurnBackButton);
             this.Controls.Add(this.UpdateSelectButton);
             this.Controls.Add(this.UpdateDataGridView);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.DataGridView_Products);
-            this.Controls.Add(this.TurnBackButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MainPagePicture);
             this.Controls.Add(this.panel2);
@@ -492,7 +492,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button SearchProduct;
         private System.Windows.Forms.TextBox SearchElementTextBox;
-        private System.Windows.Forms.Button TurnBackButton;
         private System.Windows.Forms.TextBox QuantityTextBox;
         private System.Windows.Forms.Label ProductMoneyUnit;
         private System.Windows.Forms.Button DeleteButton;
@@ -515,6 +514,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productMoneyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productMoneyUnitDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox InformationTextBox;
+        private System.Windows.Forms.Button TurnBackButton;
         //private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet;
     }
 }

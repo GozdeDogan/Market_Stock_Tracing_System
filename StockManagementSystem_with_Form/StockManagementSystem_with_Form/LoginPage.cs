@@ -34,6 +34,15 @@ namespace StockManagementSystem_with_Form
 
         SqlConnection connection = new SqlConnection("Data Source=DESKTOP-JB2BDAR\\SQLEXPRESS; Initial Catalog=StockManagementSystemDatabase; User Id=sa; password=1234;");
 
+        public SqlConnection getConnection()
+        {
+            return connection;
+        }
+
+
+        public TextBox getPasswordTextBox() { return password_textbox; }
+        public void setPasswordTextBox(string s) { password_textbox.Text = s; }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             
@@ -63,7 +72,7 @@ namespace StockManagementSystem_with_Form
 
                 if (dt.Rows.Count > 0)
                 {
-                    this.Hide();
+                    this.Visible = false;
                     mainpage = new MainPage(this);
                     mainpage.Show();
                 }
