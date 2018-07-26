@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.UpdateThisButton = new System.Windows.Forms.Button();
             this.MoneyUnitComboBox = new System.Windows.Forms.ComboBox();
@@ -54,23 +54,23 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.UpdateDataGridView = new System.Windows.Forms.Button();
             this.DataGridView_Products = new System.Windows.Forms.DataGridView();
-            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productMoneyUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productCardsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stockManagementSystemDatabaseDataSet = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
             this.UpdateSelectButton = new System.Windows.Forms.Button();
-            this.product_Cards_TableTableAdapter = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter();
             this.TurnBackButton = new System.Windows.Forms.Button();
+            this.stockManagementSystemDatabaseDataSet1 = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
+            this.productCardsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.product_Cards_TableTableAdapter1 = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPagePicture)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Products)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productCardsTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -145,7 +145,7 @@
             "packet",
             "box",
             "bottle"});
-            this.UnitListComboBox.Location = new System.Drawing.Point(203, 96);
+            this.UnitListComboBox.Location = new System.Drawing.Point(281, 96);
             this.UnitListComboBox.Name = "UnitListComboBox";
             this.UnitListComboBox.Size = new System.Drawing.Size(70, 28);
             this.UnitListComboBox.TabIndex = 10;
@@ -153,7 +153,7 @@
             // QuantityTextBox
             // 
             this.QuantityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuantityTextBox.Location = new System.Drawing.Point(287, 96);
+            this.QuantityTextBox.Location = new System.Drawing.Point(203, 98);
             this.QuantityTextBox.Name = "QuantityTextBox";
             this.QuantityTextBox.Size = new System.Drawing.Size(64, 26);
             this.QuantityTextBox.TabIndex = 9;
@@ -334,90 +334,32 @@
             this.DataGridView_Products.AllowUserToOrderColumns = true;
             this.DataGridView_Products.AutoGenerateColumns = false;
             this.DataGridView_Products.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridView_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_Products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productIDDataGridViewTextBoxColumn,
-            this.productNameDataGridViewTextBoxColumn,
-            this.productUnitDataGridViewTextBoxColumn,
-            this.productQuantityDataGridViewTextBoxColumn,
-            this.productMoneyDataGridViewTextBoxColumn,
-            this.productMoneyUnitDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
             this.DataGridView_Products.DataSource = this.productCardsTableBindingSource;
             this.DataGridView_Products.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DataGridView_Products.Location = new System.Drawing.Point(170, 314);
             this.DataGridView_Products.Name = "DataGridView_Products";
             this.DataGridView_Products.ReadOnly = true;
-            this.DataGridView_Products.RowHeadersWidth = 20;
+            this.DataGridView_Products.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.DataGridView_Products.RowTemplate.ErrorText = "ERROR";
             this.DataGridView_Products.ShowRowErrors = false;
             this.DataGridView_Products.Size = new System.Drawing.Size(550, 184);
             this.DataGridView_Products.TabIndex = 1;
-            // 
-            // productIDDataGridViewTextBoxColumn
-            // 
-            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
-            this.productIDDataGridViewTextBoxColumn.HeaderText = "ProductID";
-            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
-            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productIDDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productNameDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // productUnitDataGridViewTextBoxColumn
-            // 
-            this.productUnitDataGridViewTextBoxColumn.DataPropertyName = "ProductUnit";
-            this.productUnitDataGridViewTextBoxColumn.HeaderText = "Unit";
-            this.productUnitDataGridViewTextBoxColumn.Name = "productUnitDataGridViewTextBoxColumn";
-            this.productUnitDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productUnitDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // productQuantityDataGridViewTextBoxColumn
-            // 
-            this.productQuantityDataGridViewTextBoxColumn.DataPropertyName = "ProductQuantity";
-            this.productQuantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.productQuantityDataGridViewTextBoxColumn.Name = "productQuantityDataGridViewTextBoxColumn";
-            this.productQuantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productQuantityDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // productMoneyDataGridViewTextBoxColumn
-            // 
-            this.productMoneyDataGridViewTextBoxColumn.DataPropertyName = "ProductMoney";
-            this.productMoneyDataGridViewTextBoxColumn.HeaderText = "Money";
-            this.productMoneyDataGridViewTextBoxColumn.Name = "productMoneyDataGridViewTextBoxColumn";
-            this.productMoneyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productMoneyDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // productMoneyUnitDataGridViewTextBoxColumn
-            // 
-            this.productMoneyUnitDataGridViewTextBoxColumn.DataPropertyName = "ProductMoneyUnit";
-            this.productMoneyUnitDataGridViewTextBoxColumn.HeaderText = "MoneyUnit";
-            this.productMoneyUnitDataGridViewTextBoxColumn.Name = "productMoneyUnitDataGridViewTextBoxColumn";
-            this.productMoneyUnitDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productMoneyUnitDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // productCardsTableBindingSource
-            // 
-            this.productCardsTableBindingSource.DataMember = "Product_Cards_Table";
-            this.productCardsTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet;
-            // 
-            // stockManagementSystemDatabaseDataSet
-            // 
-            this.stockManagementSystemDatabaseDataSet.DataSetName = "StockManagementSystemDatabaseDataSet";
-            this.stockManagementSystemDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // UpdateSelectButton
             // 
@@ -432,10 +374,6 @@
             this.UpdateSelectButton.UseVisualStyleBackColor = false;
             this.UpdateSelectButton.Click += new System.EventHandler(this.UpdateSelectButton_Click);
             // 
-            // product_Cards_TableTableAdapter
-            // 
-            this.product_Cards_TableTableAdapter.ClearBeforeFill = true;
-            // 
             // TurnBackButton
             // 
             this.TurnBackButton.BackColor = System.Drawing.Color.DarkRed;
@@ -448,6 +386,68 @@
             this.TurnBackButton.Text = "Turn Back";
             this.TurnBackButton.UseVisualStyleBackColor = false;
             this.TurnBackButton.Click += new System.EventHandler(this.TurnBackButton_Click);
+            // 
+            // stockManagementSystemDatabaseDataSet1
+            // 
+            this.stockManagementSystemDatabaseDataSet1.DataSetName = "StockManagementSystemDatabaseDataSet";
+            this.stockManagementSystemDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productCardsTableBindingSource
+            // 
+            this.productCardsTableBindingSource.DataMember = "Product_Cards_Table";
+            this.productCardsTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet1;
+            // 
+            // product_Cards_TableTableAdapter1
+            // 
+            this.product_Cards_TableTableAdapter1.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ProductUnit";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Unit";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ProductQuantity";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ProductMoney";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Money";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "ProductMoneyUnit";
+            this.dataGridViewTextBoxColumn6.HeaderText = "MoneyUnit";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 85;
             // 
             // MainPage
             // 
@@ -474,8 +474,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Products)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productCardsTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -505,7 +505,6 @@
         private System.Windows.Forms.Button UpdateThisButton;
         private System.Windows.Forms.Button UpdateSelectButton;
         private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet;
-        private System.Windows.Forms.BindingSource productCardsTableBindingSource;
         private StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter product_Cards_TableTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
@@ -515,6 +514,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productMoneyUnitDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox InformationTextBox;
         private System.Windows.Forms.Button TurnBackButton;
+        private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet1;
+        private System.Windows.Forms.BindingSource productCardsTableBindingSource;
+        private StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter product_Cards_TableTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         //private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet;
     }
 }

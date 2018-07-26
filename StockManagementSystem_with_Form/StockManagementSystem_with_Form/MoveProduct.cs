@@ -12,13 +12,15 @@ namespace StockManagementSystem_with_Form
         private string MoveType;
         private DateTime MoveDate;
         private int MoveQuantity;
+        private string MoveQuantityUnit;
 
-        public MoveProduct(int MoveProductID, string MoveType, DateTime MoveDate, int MoveQuantity)
+        public MoveProduct(int MoveProductID, string MoveType, DateTime MoveDate, int MoveQuantity, string MoveQuantityUnit)
         {
             this.MoveProductID = MoveProductID;
             this.MoveType = MoveType;
             this.MoveDate = MoveDate;
             this.MoveQuantity = MoveQuantity;
+            this.MoveQuantityUnit = MoveQuantityUnit;
         }
 
         public int getMoveProductID() { return MoveProductID; }
@@ -34,6 +36,8 @@ namespace StockManagementSystem_with_Form
         public int getMoveQuantity() { return MoveQuantity; }
         public void setMoveQuantity(int MoveQuantity) { this.MoveQuantity = MoveQuantity; }
 
+        public string getMoveQuantityUnit() { return MoveQuantityUnit; }
+        public void setMoveQuantityUnit(string MoveQuantityUnit) { this.MoveQuantityUnit = MoveQuantityUnit; }
 
         public override string ToString()
         {

@@ -37,6 +37,10 @@ namespace StockManagementSystem_with_Form
 
         private void MovePage_Load(object sender, EventArgs e)
         {
+            // TODO: Bu kod satırı 'stockManagementSystemDatabaseDataSet1.Move_Table' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            this.move_TableTableAdapter.Fill(this.stockManagementSystemDatabaseDataSet1.Move_Table);
+            // TODO: Bu kod satırı 'stockManagementSystemDatabaseDataSet.Move_Table' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            this.move_TableTableAdapter.Fill(this.stockManagementSystemDatabaseDataSet.Move_Table);
             ProductTextBox.Text = product;
             ProductTextBox.Enabled = false;
             
@@ -87,11 +91,13 @@ namespace StockManagementSystem_with_Form
                     DataGridViewRow selectedRow = DataGridView_ByID.Rows[selectedrowindex];
 
                     MoveProduct temp = new MoveProduct(Convert.ToInt32(selectedRow.Cells[0].Value), selectedRow.Cells[1].Value.ToString(), 
-                        Convert.ToDateTime(selectedRow.Cells[2].Value), Convert.ToInt32(selectedRow.Cells[3].Value));
+                        Convert.ToDateTime(selectedRow.Cells[2].Value), Convert.ToInt32(selectedRow.Cells[3].Value), selectedRow.Cells[4].Value.ToString());
 
-                    string sql = "DELETE FROM StockManagementSystemDatabase.dbo.Move_Table WHERE MoveDate=@MoveDate";
+                    string sql = "DELETE FROM StockManagementSystemDatabase.dbo.Move_Table WHERE MoveProductID=@MoveProductID and MoveDate=@MoveDate and MoveQuantity=@MoveQuantity";
                     SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@MoveProductID", temp.getMoveProductID());
                     command.Parameters.AddWithValue("@MoveDate", temp.getMoveDate());
+                    command.Parameters.AddWithValue("@MoveQuantity", temp.getMoveQuantity());
                     DBUtils.OpenConnection(connection);
                     command.ExecuteNonQuery();
                     DBUtils.CloseConnection(connection);
@@ -151,7 +157,7 @@ namespace StockManagementSystem_with_Form
             {
                 string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity)" 
                     + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeComboBox.Text + "','" + MoveDateTimePicker.Value.ToString("yyyy-MM-dd") 
-                    + "','" + MoveQuantityTextBox.Text + "');";
+                    + "','" + MoveQuantityTextBox.Text + "','" + UnitComboBox.Text + "');";
                 SqlCommand command = new SqlCommand(sql, connection);
                 DBUtils.OpenConnection(connection);
                 command.ExecuteNonQuery();

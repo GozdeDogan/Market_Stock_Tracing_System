@@ -338,9 +338,9 @@ namespace StockManagementSystem_with_Form
 
         private void MainPage_Load(object sender, EventArgs e)
         {
-            // TODO: Bu kod satırı 'stockManagementSystemDatabaseDataSet.Product_Cards_Table' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            this.product_Cards_TableTableAdapter.Fill(this.stockManagementSystemDatabaseDataSet.Product_Cards_Table);
-
+            // TODO: Bu kod satırı 'stockManagementSystemDatabaseDataSet1.Product_Cards_Table' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            this.product_Cards_TableTableAdapter1.Fill(this.stockManagementSystemDatabaseDataSet1.Product_Cards_Table);
+            
             FillDataGridView();
             UnitListComboBox.SelectedIndex = 0;
             MoneyUnitComboBox.SelectedIndex = 0;

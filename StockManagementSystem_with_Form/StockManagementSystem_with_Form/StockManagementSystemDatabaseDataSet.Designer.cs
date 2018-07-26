@@ -30,6 +30,8 @@ namespace StockManagementSystem_with_Form {
         
         private Users_TableDataTable tableUsers_Table;
         
+        private global::System.Data.DataRelation relationFK_Move_Table_Product_Cards_Table;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,6 +244,7 @@ namespace StockManagementSystem_with_Form {
                     this.tableUsers_Table.InitVars();
                 }
             }
+            this.relationFK_Move_Table_Product_Cards_Table = this.Relations["FK_Move_Table_Product_Cards_Table"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +261,10 @@ namespace StockManagementSystem_with_Form {
             base.Tables.Add(this.tableProduct_Cards_Table);
             this.tableUsers_Table = new Users_TableDataTable();
             base.Tables.Add(this.tableUsers_Table);
+            this.relationFK_Move_Table_Product_Cards_Table = new global::System.Data.DataRelation("FK_Move_Table_Product_Cards_Table", new global::System.Data.DataColumn[] {
+                        this.tableProduct_Cards_Table.ProductIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMove_Table.MoveProductIDColumn}, false);
+            this.Relations.Add(this.relationFK_Move_Table_Product_Cards_Table);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -357,6 +364,8 @@ namespace StockManagementSystem_with_Form {
             
             private global::System.Data.DataColumn columnMoveQuantity;
             
+            private global::System.Data.DataColumn columnMoveQuantityUnit;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public Move_TableDataTable() {
@@ -424,6 +433,14 @@ namespace StockManagementSystem_with_Form {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MoveQuantityUnitColumn {
+                get {
+                    return this.columnMoveQuantityUnit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,16 +476,29 @@ namespace StockManagementSystem_with_Form {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public Move_TableRow AddMove_TableRow(int MoveProductID, string MoveType, System.DateTime MoveDate, int MoveQuantity) {
+            public Move_TableRow AddMove_TableRow(Product_Cards_TableRow parentProduct_Cards_TableRowByFK_Move_Table_Product_Cards_Table, string MoveType, System.DateTime MoveDate, int MoveQuantity, string MoveQuantityUnit) {
                 Move_TableRow rowMove_TableRow = ((Move_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        MoveProductID,
+                        null,
                         MoveType,
                         MoveDate,
-                        MoveQuantity};
+                        MoveQuantity,
+                        MoveQuantityUnit};
+                if ((parentProduct_Cards_TableRowByFK_Move_Table_Product_Cards_Table != null)) {
+                    columnValuesArray[0] = parentProduct_Cards_TableRowByFK_Move_Table_Product_Cards_Table[0];
+                }
                 rowMove_TableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMove_TableRow);
                 return rowMove_TableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public Move_TableRow FindByMoveProductIDMoveDateMoveQuantity(int MoveProductID, System.DateTime MoveDate, int MoveQuantity) {
+                return ((Move_TableRow)(this.Rows.Find(new object[] {
+                            MoveProductID,
+                            MoveDate,
+                            MoveQuantity})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -492,6 +522,7 @@ namespace StockManagementSystem_with_Form {
                 this.columnMoveType = base.Columns["MoveType"];
                 this.columnMoveDate = base.Columns["MoveDate"];
                 this.columnMoveQuantity = base.Columns["MoveQuantity"];
+                this.columnMoveQuantityUnit = base.Columns["MoveQuantityUnit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -505,11 +536,19 @@ namespace StockManagementSystem_with_Form {
                 base.Columns.Add(this.columnMoveDate);
                 this.columnMoveQuantity = new global::System.Data.DataColumn("MoveQuantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMoveQuantity);
+                this.columnMoveQuantityUnit = new global::System.Data.DataColumn("MoveQuantityUnit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMoveQuantityUnit);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnMoveProductID,
+                                this.columnMoveDate,
+                                this.columnMoveQuantity}, true));
                 this.columnMoveProductID.AllowDBNull = false;
                 this.columnMoveType.AllowDBNull = false;
                 this.columnMoveType.MaxLength = 50;
                 this.columnMoveDate.AllowDBNull = false;
                 this.columnMoveQuantity.AllowDBNull = false;
+                this.columnMoveQuantityUnit.AllowDBNull = false;
+                this.columnMoveQuantityUnit.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1294,6 +1333,28 @@ namespace StockManagementSystem_with_Form {
                     this[this.tableMove_Table.MoveQuantityColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MoveQuantityUnit {
+                get {
+                    return ((string)(this[this.tableMove_Table.MoveQuantityUnitColumn]));
+                }
+                set {
+                    this[this.tableMove_Table.MoveQuantityUnitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public Product_Cards_TableRow Product_Cards_TableRow {
+                get {
+                    return ((Product_Cards_TableRow)(this.GetParentRow(this.Table.ParentRelations["FK_Move_Table_Product_Cards_Table"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Move_Table_Product_Cards_Table"]);
+                }
+            }
         }
         
         /// <summary>
@@ -1373,6 +1434,17 @@ namespace StockManagementSystem_with_Form {
                 }
                 set {
                     this[this.tableProduct_Cards_Table.ProductMoneyUnitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public Move_TableRow[] GetMove_TableRows() {
+                if ((this.Table.ChildRelations["FK_Move_Table_Product_Cards_Table"] == null)) {
+                    return new Move_TableRow[0];
+                }
+                else {
+                    return ((Move_TableRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Move_Table_Product_Cards_Table"])));
                 }
             }
         }
@@ -1645,16 +1717,42 @@ namespace StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTa
             tableMapping.ColumnMappings.Add("MoveType", "MoveType");
             tableMapping.ColumnMappings.Add("MoveDate", "MoveDate");
             tableMapping.ColumnMappings.Add("MoveQuantity", "MoveQuantity");
+            tableMapping.ColumnMappings.Add("MoveQuantityUnit", "MoveQuantityUnit");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Move_Table] WHERE (([MoveProductID] = @Original_MoveProductID) AND ([MoveType] = @Original_MoveType) AND ([MoveDate] = @Original_MoveDate) AND ([MoveQuantity] = @Original_MoveQuantity) AND ([MoveQuantityUnit] = @Original_MoveQuantityUnit))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveProductID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveProductID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveQuantityUnit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantityUnit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Move_Table] ([MoveProductID], [MoveType], [MoveDate], [MoveQua" +
-                "ntity]) VALUES (@MoveProductID, @MoveType, @MoveDate, @MoveQuantity)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Move_Table] ([MoveProductID], [MoveType], [MoveDate], [MoveQuantity], [MoveQuantityUnit]) VALUES (@MoveProductID, @MoveType, @MoveDate, @MoveQuantity, @MoveQuantityUnit);
+SELECT MoveProductID, MoveType, MoveDate, MoveQuantity, MoveQuantityUnit FROM Move_Table WHERE (MoveDate = @MoveDate) AND (MoveProductID = @MoveProductID) AND (MoveQuantity = @MoveQuantity)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveProductID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveProductID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveQuantityUnit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantityUnit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Move_Table] SET [MoveProductID] = @MoveProductID, [MoveType] = @MoveType, [MoveDate] = @MoveDate, [MoveQuantity] = @MoveQuantity, [MoveQuantityUnit] = @MoveQuantityUnit WHERE (([MoveProductID] = @Original_MoveProductID) AND ([MoveType] = @Original_MoveType) AND ([MoveDate] = @Original_MoveDate) AND ([MoveQuantity] = @Original_MoveQuantity) AND ([MoveQuantityUnit] = @Original_MoveQuantityUnit));
+SELECT MoveProductID, MoveType, MoveDate, MoveQuantity, MoveQuantityUnit FROM Move_Table WHERE (MoveDate = @MoveDate) AND (MoveProductID = @MoveProductID) AND (MoveQuantity = @MoveQuantity)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveProductID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveProductID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MoveQuantityUnit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantityUnit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveProductID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveProductID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MoveQuantityUnit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MoveQuantityUnit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1670,7 +1768,8 @@ namespace StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTa
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT MoveProductID, MoveType, MoveDate, MoveQuantity FROM dbo.Move_Table";
+            this._commandCollection[0].CommandText = "SELECT MoveProductID, MoveType, MoveDate, MoveQuantity, MoveQuantityUnit FROM dbo" +
+                ".Move_Table";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1730,8 +1829,44 @@ namespace StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_MoveProductID, string Original_MoveType, System.DateTime Original_MoveDate, int Original_MoveQuantity, string Original_MoveQuantityUnit) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_MoveProductID));
+            if ((Original_MoveType == null)) {
+                throw new global::System.ArgumentNullException("Original_MoveType");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_MoveType));
+            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_MoveDate));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_MoveQuantity));
+            if ((Original_MoveQuantityUnit == null)) {
+                throw new global::System.ArgumentNullException("Original_MoveQuantityUnit");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_MoveQuantityUnit));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int MoveProductID, string MoveType, System.DateTime MoveDate, int MoveQuantity) {
+        public virtual int Insert(int MoveProductID, string MoveType, System.DateTime MoveDate, int MoveQuantity, string MoveQuantityUnit) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(MoveProductID));
             if ((MoveType == null)) {
                 throw new global::System.ArgumentNullException("MoveType");
@@ -1741,6 +1876,12 @@ namespace StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTa
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(MoveDate));
             this.Adapter.InsertCommand.Parameters[3].Value = ((int)(MoveQuantity));
+            if ((MoveQuantityUnit == null)) {
+                throw new global::System.ArgumentNullException("MoveQuantityUnit");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(MoveQuantityUnit));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1755,6 +1896,65 @@ namespace StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTa
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int MoveProductID, string MoveType, System.DateTime MoveDate, int MoveQuantity, string MoveQuantityUnit, int Original_MoveProductID, string Original_MoveType, System.DateTime Original_MoveDate, int Original_MoveQuantity, string Original_MoveQuantityUnit) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(MoveProductID));
+            if ((MoveType == null)) {
+                throw new global::System.ArgumentNullException("MoveType");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(MoveType));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(MoveDate));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(MoveQuantity));
+            if ((MoveQuantityUnit == null)) {
+                throw new global::System.ArgumentNullException("MoveQuantityUnit");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(MoveQuantityUnit));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_MoveProductID));
+            if ((Original_MoveType == null)) {
+                throw new global::System.ArgumentNullException("Original_MoveType");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_MoveType));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_MoveDate));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_MoveQuantity));
+            if ((Original_MoveQuantityUnit == null)) {
+                throw new global::System.ArgumentNullException("Original_MoveQuantityUnit");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_MoveQuantityUnit));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string MoveType, string MoveQuantityUnit, int Original_MoveProductID, string Original_MoveType, System.DateTime Original_MoveDate, int Original_MoveQuantity, string Original_MoveQuantityUnit) {
+            return this.Update(Original_MoveProductID, MoveType, Original_MoveDate, Original_MoveQuantity, MoveQuantityUnit, Original_MoveProductID, Original_MoveType, Original_MoveDate, Original_MoveQuantity, Original_MoveQuantityUnit);
         }
     }
     
@@ -2529,21 +2729,21 @@ SELECT ProductID, ProductName, ProductUnit, ProductQuantity, ProductMoney, Produ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(StockManagementSystemDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._move_TableTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Move_Table.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._move_TableTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._product_Cards_TableTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Product_Cards_Table.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._product_Cards_TableTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._move_TableTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Move_Table.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._move_TableTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -2566,19 +2766,19 @@ SELECT ProductID, ProductName, ProductUnit, ProductQuantity, ProductMoney, Produ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(StockManagementSystemDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._move_TableTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Move_Table.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._move_TableTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._product_Cards_TableTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Product_Cards_Table.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._product_Cards_TableTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._move_TableTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Move_Table.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._move_TableTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -2608,19 +2808,19 @@ SELECT ProductID, ProductName, ProductUnit, ProductQuantity, ProductMoney, Produ
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._product_Cards_TableTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Product_Cards_Table.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._product_Cards_TableTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._move_TableTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Move_Table.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._move_TableTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._product_Cards_TableTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Product_Cards_Table.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._product_Cards_TableTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

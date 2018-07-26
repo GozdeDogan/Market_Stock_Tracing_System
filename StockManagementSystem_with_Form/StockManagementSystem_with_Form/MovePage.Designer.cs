@@ -31,20 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovePage));
             this.DataGridView_ByID = new System.Windows.Forms.DataGridView();
-            this.moveProductIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moveTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moveQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menu_byID_DataGridView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ınsertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stockManagementSystemDatabaseDataSet = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
-            this.move_TableTableAdapter = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Move_TableTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductTextBox = new System.Windows.Forms.TextBox();
             this.turnbackButton = new System.Windows.Forms.Button();
             this.InsertPanel = new System.Windows.Forms.Panel();
+            this.MoveTypeComboBox = new System.Windows.Forms.ComboBox();
             this.MoveDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.BackButton = new System.Windows.Forms.Button();
             this.InformationTextBox = new System.Windows.Forms.TextBox();
@@ -57,14 +51,26 @@
             this.InsertButton = new System.Windows.Forms.Button();
             this.GridPanel = new System.Windows.Forms.Panel();
             this.TurnBackPictureBox = new System.Windows.Forms.PictureBox();
-            this.MoveTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.UnitComboBox = new System.Windows.Forms.ComboBox();
+            this.stockManagementSystemDatabaseDataSet = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
+            this.moveTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.move_TableTableAdapter = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Move_TableTableAdapter();
+            this.stockManagementSystemDatabaseDataSet1 = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
+            this.moveTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.moveProductIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moveTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moveQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moveQuantityUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_ByID)).BeginInit();
             this.menu_byID_DataGridView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).BeginInit();
             this.InsertPanel.SuspendLayout();
             this.GridPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnBackPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // DataGridView_ByID
@@ -80,43 +86,16 @@
             this.moveProductIDDataGridViewTextBoxColumn,
             this.moveTypeDataGridViewTextBoxColumn,
             this.moveDateDataGridViewTextBoxColumn,
-            this.moveQuantityDataGridViewTextBoxColumn});
+            this.moveQuantityDataGridViewTextBoxColumn,
+            this.moveQuantityUnitDataGridViewTextBoxColumn});
             this.DataGridView_ByID.ContextMenuStrip = this.menu_byID_DataGridView;
-            this.DataGridView_ByID.DataSource = this.moveTableBindingSource;
+            this.DataGridView_ByID.DataSource = this.moveTableBindingSource1;
             this.DataGridView_ByID.Location = new System.Drawing.Point(4, 11);
             this.DataGridView_ByID.Name = "DataGridView_ByID";
             this.DataGridView_ByID.ReadOnly = true;
             this.DataGridView_ByID.RowHeadersWidth = 20;
-            this.DataGridView_ByID.Size = new System.Drawing.Size(447, 223);
+            this.DataGridView_ByID.Size = new System.Drawing.Size(450, 223);
             this.DataGridView_ByID.TabIndex = 0;
-            // 
-            // moveProductIDDataGridViewTextBoxColumn
-            // 
-            this.moveProductIDDataGridViewTextBoxColumn.DataPropertyName = "MoveProductID";
-            this.moveProductIDDataGridViewTextBoxColumn.HeaderText = "MoveProductID";
-            this.moveProductIDDataGridViewTextBoxColumn.Name = "moveProductIDDataGridViewTextBoxColumn";
-            this.moveProductIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // moveTypeDataGridViewTextBoxColumn
-            // 
-            this.moveTypeDataGridViewTextBoxColumn.DataPropertyName = "MoveType";
-            this.moveTypeDataGridViewTextBoxColumn.HeaderText = "MoveType";
-            this.moveTypeDataGridViewTextBoxColumn.Name = "moveTypeDataGridViewTextBoxColumn";
-            this.moveTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // moveDateDataGridViewTextBoxColumn
-            // 
-            this.moveDateDataGridViewTextBoxColumn.DataPropertyName = "MoveDate";
-            this.moveDateDataGridViewTextBoxColumn.HeaderText = "MoveDate";
-            this.moveDateDataGridViewTextBoxColumn.Name = "moveDateDataGridViewTextBoxColumn";
-            this.moveDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // moveQuantityDataGridViewTextBoxColumn
-            // 
-            this.moveQuantityDataGridViewTextBoxColumn.DataPropertyName = "MoveQuantity";
-            this.moveQuantityDataGridViewTextBoxColumn.HeaderText = "MoveQuantity";
-            this.moveQuantityDataGridViewTextBoxColumn.Name = "moveQuantityDataGridViewTextBoxColumn";
-            this.moveQuantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // menu_byID_DataGridView
             // 
@@ -139,20 +118,6 @@
             this.ınsertToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.ınsertToolStripMenuItem.Text = "Insert";
             this.ınsertToolStripMenuItem.Click += new System.EventHandler(this.ınsertToolStripMenuItem_Click);
-            // 
-            // moveTableBindingSource
-            // 
-            this.moveTableBindingSource.DataMember = "Move_Table";
-            this.moveTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet;
-            // 
-            // stockManagementSystemDatabaseDataSet
-            // 
-            this.stockManagementSystemDatabaseDataSet.DataSetName = "StockManagementSystemDatabaseDataSet";
-            this.stockManagementSystemDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // move_TableTableAdapter
-            // 
-            this.move_TableTableAdapter.ClearBeforeFill = true;
             // 
             // label1
             // 
@@ -186,6 +151,7 @@
             // InsertPanel
             // 
             this.InsertPanel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.InsertPanel.Controls.Add(this.UnitComboBox);
             this.InsertPanel.Controls.Add(this.MoveTypeComboBox);
             this.InsertPanel.Controls.Add(this.MoveDateTimePicker);
             this.InsertPanel.Controls.Add(this.BackButton);
@@ -201,6 +167,18 @@
             this.InsertPanel.Name = "InsertPanel";
             this.InsertPanel.Size = new System.Drawing.Size(349, 275);
             this.InsertPanel.TabIndex = 5;
+            // 
+            // MoveTypeComboBox
+            // 
+            this.MoveTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.MoveTypeComboBox.FormattingEnabled = true;
+            this.MoveTypeComboBox.Items.AddRange(new object[] {
+            "entry",
+            "out"});
+            this.MoveTypeComboBox.Location = new System.Drawing.Point(205, 58);
+            this.MoveTypeComboBox.Name = "MoveTypeComboBox";
+            this.MoveTypeComboBox.Size = new System.Drawing.Size(121, 28);
+            this.MoveTypeComboBox.TabIndex = 13;
             // 
             // MoveDateTimePicker
             // 
@@ -237,17 +215,17 @@
             // 
             this.MoveQuantityLabel.AutoSize = true;
             this.MoveQuantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveQuantityLabel.Location = new System.Drawing.Point(31, 141);
+            this.MoveQuantityLabel.Location = new System.Drawing.Point(16, 141);
             this.MoveQuantityLabel.Name = "MoveQuantityLabel";
-            this.MoveQuantityLabel.Size = new System.Drawing.Size(118, 20);
+            this.MoveQuantityLabel.Size = new System.Drawing.Size(157, 20);
             this.MoveQuantityLabel.TabIndex = 9;
-            this.MoveQuantityLabel.Text = "MoveQuantity";
+            this.MoveQuantityLabel.Text = "MoveQuantity-Unit";
             // 
             // MoveDateLabel
             // 
             this.MoveDateLabel.AutoSize = true;
             this.MoveDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveDateLabel.Location = new System.Drawing.Point(31, 98);
+            this.MoveDateLabel.Location = new System.Drawing.Point(16, 98);
             this.MoveDateLabel.Name = "MoveDateLabel";
             this.MoveDateLabel.Size = new System.Drawing.Size(90, 20);
             this.MoveDateLabel.TabIndex = 8;
@@ -257,7 +235,7 @@
             // 
             this.MoveTypeLabel.AutoSize = true;
             this.MoveTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveTypeLabel.Location = new System.Drawing.Point(31, 55);
+            this.MoveTypeLabel.Location = new System.Drawing.Point(16, 58);
             this.MoveTypeLabel.Name = "MoveTypeLabel";
             this.MoveTypeLabel.Size = new System.Drawing.Size(89, 20);
             this.MoveTypeLabel.TabIndex = 7;
@@ -267,7 +245,7 @@
             // 
             this.MoveProductIDLabel.AutoSize = true;
             this.MoveProductIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveProductIDLabel.Location = new System.Drawing.Point(29, 12);
+            this.MoveProductIDLabel.Location = new System.Drawing.Point(16, 14);
             this.MoveProductIDLabel.Name = "MoveProductIDLabel";
             this.MoveProductIDLabel.Size = new System.Drawing.Size(132, 20);
             this.MoveProductIDLabel.TabIndex = 6;
@@ -278,7 +256,7 @@
             this.MoveQuantityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.MoveQuantityTextBox.Location = new System.Drawing.Point(201, 141);
             this.MoveQuantityTextBox.Name = "MoveQuantityTextBox";
-            this.MoveQuantityTextBox.Size = new System.Drawing.Size(127, 26);
+            this.MoveQuantityTextBox.Size = new System.Drawing.Size(56, 26);
             this.MoveQuantityTextBox.TabIndex = 5;
             // 
             // MoveProductIDTextBox
@@ -320,17 +298,91 @@
             this.TurnBackPictureBox.TabStop = false;
             this.TurnBackPictureBox.Click += new System.EventHandler(this.TurnBackPictureBox_Click);
             // 
-            // MoveTypeComboBox
+            // UnitComboBox
             // 
-            this.MoveTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MoveTypeComboBox.FormattingEnabled = true;
-            this.MoveTypeComboBox.Items.AddRange(new object[] {
-            "entry",
-            "out"});
-            this.MoveTypeComboBox.Location = new System.Drawing.Point(205, 58);
-            this.MoveTypeComboBox.Name = "MoveTypeComboBox";
-            this.MoveTypeComboBox.Size = new System.Drawing.Size(121, 28);
-            this.MoveTypeComboBox.TabIndex = 13;
+            this.UnitComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.UnitComboBox.FormattingEnabled = true;
+            this.UnitComboBox.Items.AddRange(new object[] {
+            "km",
+            "m",
+            "cm",
+            "ton",
+            "kg",
+            "g",
+            "mg",
+            "lt",
+            "piece",
+            "packet",
+            "box",
+            "bottle"});
+            this.UnitComboBox.Location = new System.Drawing.Point(265, 140);
+            this.UnitComboBox.Name = "UnitComboBox";
+            this.UnitComboBox.Size = new System.Drawing.Size(63, 28);
+            this.UnitComboBox.TabIndex = 14;
+            // 
+            // stockManagementSystemDatabaseDataSet
+            // 
+            this.stockManagementSystemDatabaseDataSet.DataSetName = "StockManagementSystemDatabaseDataSet";
+            this.stockManagementSystemDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // moveTableBindingSource
+            // 
+            this.moveTableBindingSource.DataMember = "Move_Table";
+            this.moveTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet;
+            // 
+            // move_TableTableAdapter
+            // 
+            this.move_TableTableAdapter.ClearBeforeFill = true;
+            // 
+            // stockManagementSystemDatabaseDataSet1
+            // 
+            this.stockManagementSystemDatabaseDataSet1.DataSetName = "StockManagementSystemDatabaseDataSet";
+            this.stockManagementSystemDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // moveTableBindingSource1
+            // 
+            this.moveTableBindingSource1.DataMember = "Move_Table";
+            this.moveTableBindingSource1.DataSource = this.stockManagementSystemDatabaseDataSet1;
+            // 
+            // moveProductIDDataGridViewTextBoxColumn
+            // 
+            this.moveProductIDDataGridViewTextBoxColumn.DataPropertyName = "MoveProductID";
+            this.moveProductIDDataGridViewTextBoxColumn.HeaderText = "ProductID";
+            this.moveProductIDDataGridViewTextBoxColumn.Name = "moveProductIDDataGridViewTextBoxColumn";
+            this.moveProductIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.moveProductIDDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // moveTypeDataGridViewTextBoxColumn
+            // 
+            this.moveTypeDataGridViewTextBoxColumn.DataPropertyName = "MoveType";
+            this.moveTypeDataGridViewTextBoxColumn.HeaderText = "MoveType";
+            this.moveTypeDataGridViewTextBoxColumn.Name = "moveTypeDataGridViewTextBoxColumn";
+            this.moveTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.moveTypeDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // moveDateDataGridViewTextBoxColumn
+            // 
+            this.moveDateDataGridViewTextBoxColumn.DataPropertyName = "MoveDate";
+            this.moveDateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.moveDateDataGridViewTextBoxColumn.Name = "moveDateDataGridViewTextBoxColumn";
+            this.moveDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.moveDateDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // moveQuantityDataGridViewTextBoxColumn
+            // 
+            this.moveQuantityDataGridViewTextBoxColumn.DataPropertyName = "MoveQuantity";
+            this.moveQuantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.moveQuantityDataGridViewTextBoxColumn.Name = "moveQuantityDataGridViewTextBoxColumn";
+            this.moveQuantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.moveQuantityDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // moveQuantityUnitDataGridViewTextBoxColumn
+            // 
+            this.moveQuantityUnitDataGridViewTextBoxColumn.DataPropertyName = "MoveQuantityUnit";
+            this.moveQuantityUnitDataGridViewTextBoxColumn.HeaderText = "QuantityUnit";
+            this.moveQuantityUnitDataGridViewTextBoxColumn.Name = "moveQuantityUnitDataGridViewTextBoxColumn";
+            this.moveQuantityUnitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.moveQuantityUnitDataGridViewTextBoxColumn.Width = 85;
             // 
             // MovePage
             // 
@@ -339,24 +391,26 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(482, 343);
-            this.Controls.Add(this.InsertPanel);
             this.Controls.Add(this.GridPanel);
             this.Controls.Add(this.turnbackButton);
             this.Controls.Add(this.TurnBackPictureBox);
             this.Controls.Add(this.ProductTextBox);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.InsertPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MovePage";
             this.Text = "MovePage";
             this.Load += new System.EventHandler(this.MovePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_ByID)).EndInit();
             this.menu_byID_DataGridView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).EndInit();
             this.InsertPanel.ResumeLayout(false);
             this.InsertPanel.PerformLayout();
             this.GridPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TurnBackPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveTableBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,13 +419,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DataGridView_ByID;
-        private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet;
-        private System.Windows.Forms.BindingSource moveTableBindingSource;
-        private StockManagementSystemDatabaseDataSetTableAdapters.Move_TableTableAdapter move_TableTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moveProductIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moveTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moveDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moveQuantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.ContextMenuStrip menu_byID_DataGridView;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Label label1;
@@ -392,5 +439,16 @@
         private System.Windows.Forms.DateTimePicker MoveDateTimePicker;
         private System.Windows.Forms.PictureBox TurnBackPictureBox;
         private System.Windows.Forms.ComboBox MoveTypeComboBox;
+        private System.Windows.Forms.ComboBox UnitComboBox;
+        private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet;
+        private System.Windows.Forms.BindingSource moveTableBindingSource;
+        private StockManagementSystemDatabaseDataSetTableAdapters.Move_TableTableAdapter move_TableTableAdapter;
+        private StockManagementSystemDatabaseDataSet stockManagementSystemDatabaseDataSet1;
+        private System.Windows.Forms.BindingSource moveTableBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moveProductIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moveTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moveDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moveQuantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moveQuantityUnitDataGridViewTextBoxColumn;
     }
 }

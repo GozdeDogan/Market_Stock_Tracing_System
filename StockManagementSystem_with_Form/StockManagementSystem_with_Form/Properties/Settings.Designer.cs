@@ -44,5 +44,16 @@ namespace StockManagementSystem_with_Form.Properties {
                 return ((string)(this["StockManagementSystemDatabaseConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-JB2BDAR\\SQLEXPRESS;Initial Catalog=StockManagementSystemDatab" +
+            "ase;Integrated Security=True")]
+        public string StockManagementSystemDatabaseConnectionString2 {
+            get {
+                return ((string)(this["StockManagementSystemDatabaseConnectionString2"]));
+            }
+        }
     }
 }
