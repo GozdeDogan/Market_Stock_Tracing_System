@@ -110,12 +110,9 @@ namespace StockManagementSystem_with_Form
             else
             {
                 int size = -1;
-                int result = 2;
+                int result = -1;
                 try
                 {
-                    int parsedint = int.Parse(IDTextBox.Text);
-                    Console.WriteLine(parsedint);
-
                     DataTable dt = new DataTable();
                     dt.Columns.Add("id", typeof(int));
                     dt.Columns.Add("name", typeof(string));
@@ -126,7 +123,7 @@ namespace StockManagementSystem_with_Form
                     size = 0;
 
                     DBUtils.OpenConnection(conn);
-                    string cmd = "Select * from StockManagementSystemDatabase.dbo.Product_Cards_Table where ProductID=" + IDTextBox.Text + "or ProductName=" + NameTextBox.Text+ ";";
+                    string cmd = "Select * from StockManagementSystemDatabase.dbo.Product_Cards_Table where ProductID='" + IDTextBox.Text + "' or ProductName='" + NameTextBox.Text.ToUpper() + "';";
 
                     SqlCommand command = new SqlCommand(cmd, conn);
                     SqlDataReader dataReader = command.ExecuteReader();
@@ -141,9 +138,9 @@ namespace StockManagementSystem_with_Form
                         temp.setMoney((int)dataReader.GetValue(4));
                         temp.setMoneyunit(dataReader.GetValue(5).ToString());
 
-                        if (temp.getID() == Int32.Parse(IDTextBox.Text) | (temp.getName().CompareTo(NameTextBox.Text.ToUpper()) == 0))
+                        if (temp.getID() == Int32.Parse(IDTextBox.Text) | (temp.getName().ToUpper().CompareTo(NameTextBox.Text.ToUpper()) == 0))
                         {
-                            dt.Rows.Add(temp.getID(), temp.getName(), temp.getUnit(), temp.getQuantity());
+                            dt.Rows.Add(temp.getID(), temp.getName().ToUpper(), temp.getUnit(), temp.getQuantity(), temp.getMoney(), temp.getMoneyunit());
                             Console.WriteLine(dt.Rows[size].Field<int>(0) + "\t" + dt.Rows[size].Field<string>(1) + "\t"
                                 + dt.Rows[size].Field<string>(2) + "\t" + dt.Rows[size].Field<int>(3) + "\t" 
                                 + dt.Rows[size].Field<int>(4) + "\t" + dt.Rows[size].Field<string>(5));
@@ -163,7 +160,7 @@ namespace StockManagementSystem_with_Form
                         SqlCommand MyCommand = new SqlCommand(Query, conn);
 
                         DBUtils.OpenConnection(conn);
-                        MyCommand.ExecuteNonQuery();;
+                        MyCommand.ExecuteNonQuery();
                         MessageBox.Show("Save product", "SUCCESS INSERT");
 
                         //FillDataGridView();
@@ -171,6 +168,17 @@ namespace StockManagementSystem_with_Form
                         cardTable.Rows.Add(this.IDTextBox.Text, this.NameTextBox.Text.ToUpper(), this.UnitListComboBox.Text, this.QuantityTextBox.Text, this.MoneyTextBox.Text, this.MoneyUnitComboBox.Text);
                         DataGridView_Products.DataSource = cardTable;
                         DataGridView_Products.Refresh();
+
+
+                        string Query2 = "insert into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID,MoveType,MoveDate,MoveQuantity,MoveQuantityUnit) " +
+                                "values('" + this.IDTextBox.Text + "','entry','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + this.QuantityTextBox.Text + "','" + this.UnitListComboBox.Text + "');";
+
+                        SqlCommand MyCommand2 = new SqlCommand(Query2, conn);
+
+                        DBUtils.OpenConnection(conn);
+                        MyCommand2.ExecuteNonQuery();
+                        DBUtils.CloseConnection(conn);
+
 
                         result = 1;
                     }
@@ -187,6 +195,10 @@ namespace StockManagementSystem_with_Form
                         IDTextBox.Clear();
                         NameTextBox.Clear();
                     }
+                    else if(result == -1)
+                    {
+                        MessageBox.Show("NOLUYO!");
+                    }
                 }
                 finally
                 {
@@ -194,25 +206,13 @@ namespace StockManagementSystem_with_Form
                     DataGridView_Products.DataSource = cardTable;
                     DataGridView_Products.Refresh();
                     FillDataGridView();
-
-                    if (result != 2)
-                    {
-                        string Query2 = "insert into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID,MoveType,MoveDate,MoveQuantity,MoveQuantityUnit) " +
-                                "values('" + this.IDTextBox.Text + "','entry','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + this.QuantityTextBox.Text + "','" + this.UnitListComboBox.Text + "');";
-
-                        SqlCommand MyCommand2 = new SqlCommand(Query2, conn);
-
-                        DBUtils.OpenConnection(conn);
-                        MyCommand2.ExecuteNonQuery();
-                        DBUtils.CloseConnection(conn);
-
-                        IDTextBox.Clear();
-                        NameTextBox.Clear();
-                        UnitListComboBox.Text = "";
-                        QuantityTextBox.Clear();
-                        MoneyTextBox.Clear();
-                        MoneyUnitComboBox.Text = "";
-                    }
+                    
+                    IDTextBox.Clear();
+                    NameTextBox.Clear();
+                    UnitListComboBox.Text = "";
+                    QuantityTextBox.Clear();
+                    MoneyTextBox.Clear();
+                    MoneyUnitComboBox.Text = "";
                 }
             }
         }
@@ -302,15 +302,24 @@ namespace StockManagementSystem_with_Form
                     {
                         string message = "";
                         int i = 0;
+                        Product temp = new Product();
+
                         foreach (DataRow row in dt.Rows)
                         {
+                            temp.setID(dt.Rows[i].Field<int>(0));
+                            temp.setName(dt.Rows[i].Field<string>(1));
+                            temp.setUnit(dt.Rows[i].Field<string>(2));
+                            temp.setQuantity(dt.Rows[i].Field<int>(3));
+                            temp.setMoney(dt.Rows[i].Field<int>(4));
+                            temp.setMoneyunit(dt.Rows[i].Field<string>(5));
+
                             message = message + dt.Rows[i].Field<int>(0).ToString() + " - " + dt.Rows[i].Field<string>(1) + " " 
                                 +  dt.Rows[i].Field<int>(3).ToString() + " " + dt.Rows[i].Field<string>(2) + " and unit price is " 
                                 + dt.Rows[i].Field<int>(4).ToString() + dt.Rows[i].Field<string>(5) + "\n";
                             i++;
                         }
                         
-                        MovePage movepage = new MovePage(conn, Convert.ToInt32(SearchElementTextBox.Text), message, this);
+                        MovePage movepage = new MovePage(conn, Convert.ToInt32(SearchElementTextBox.Text), message, this, temp.getName(), temp.getUnit(), temp.getQuantity(), temp.getMoney(), temp.getMoneyunit());
 
                         DataGridView_Products.DataSource = cardTable;
                         SearchElementTextBox.Clear();
@@ -414,7 +423,7 @@ namespace StockManagementSystem_with_Form
             }
         }
 
-        private void FillDataGridView()
+        public void FillDataGridView()
         {
             SqlDataAdapter da;
             DataSet ds;

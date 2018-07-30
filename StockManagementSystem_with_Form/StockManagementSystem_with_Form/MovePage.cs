@@ -15,11 +15,16 @@ namespace StockManagementSystem_with_Form
     {
         SqlConnection connection;
         string byID;
+        string name;
+        string unit;
+        int quantity;
+        int money;
+        string moneyunit;
         string product;
         int SizeMoves = 0;
         MainPage mainpage;
 
-        public MovePage(SqlConnection connection, int id, string product, MainPage mainpage)
+        public MovePage(SqlConnection connection, int id, string product, MainPage mainpage, string name, string unit, int quantity, int money, string moneyunit)
         {
             InitializeComponent();
 
@@ -28,6 +33,11 @@ namespace StockManagementSystem_with_Form
 
             this.connection = connection;
             byID = id.ToString();
+            this.name = name;
+            this.unit = unit;
+            this.quantity = quantity;
+            this.money = money;
+            this.moneyunit = moneyunit;
             this.product = product;
             this.mainpage = mainpage;
 
@@ -138,6 +148,8 @@ namespace StockManagementSystem_with_Form
                 MoveProductIDTextBox.Text = byID;
                 MoveProductIDTextBox.Enabled = false;
                 MoveDateTimePicker.Text = "";
+                UnitComboBox.Text = this.unit;
+                UnitComboBox.Enabled = false;
 
                 turnbackButton.Visible = false;
                 TurnBackPictureBox.Visible = false;
@@ -154,17 +166,51 @@ namespace StockManagementSystem_with_Form
 
         private void InsertButton_Click(object sender, EventArgs e)
         {
+            int state = 2;
             try
             {
-                string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity, MoveQuantityUnit)" 
-                    + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeComboBox.Text + "','" + MoveDateTimePicker.Value.ToString("yyyy-MM-dd") 
+                if(MoveTypeComboBox.Text.ToString().CompareTo("out")==0 & Convert.ToInt32(MoveQuantityTextBox.Text) > this.quantity)
+                {
+                    MessageBox.Show("Product in stock is not enough!", "INVALID QUANTITY");
+                    state = 1;
+                }
+                else
+                {
+                    string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity, MoveQuantityUnit)"
+                    + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeComboBox.Text + "','" + MoveDateTimePicker.Value.ToString("yyyy-MM-dd")
                     + "','" + MoveQuantityTextBox.Text + "','" + UnitComboBox.Text + "');";
-                SqlCommand command = new SqlCommand(sql, connection);
-                DBUtils.OpenConnection(connection);
-                command.ExecuteNonQuery();
-                DBUtils.CloseConnection(connection);
-                MessageBox.Show("Product Move added!", "SUCCESS INSERTED");
-                
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    DBUtils.OpenConnection(connection);
+                    command.ExecuteNonQuery();
+                    DBUtils.CloseConnection(connection);
+
+                    int newquantity = 0;
+                    if (MoveTypeComboBox.Text.ToString().CompareTo("entry") == 0)
+                    {
+                        newquantity = this.quantity + Convert.ToInt32(MoveQuantityTextBox.Text);
+                    }
+                    else if (MoveTypeComboBox.Text.ToString().CompareTo("out") == 0)
+                    {
+                        newquantity = this.quantity - Convert.ToInt32(MoveQuantityTextBox.Text);
+                    }
+
+                    string Query = "update StockManagementSystemDatabase.dbo.Product_Cards_Table set ProductID='" + byID
+                            + "',ProductName='" + this.name + "',ProductUnit='" + this.unit + "',ProductQuantity='" + newquantity
+                            + "',ProductMoney='" + this.money + "',ProductMoneyUnit='" + this.moneyunit + "' WHERE ProductID=@ProductID;";
+
+                    SqlCommand MyCommand = new SqlCommand(Query, connection);
+
+                    MyCommand.Parameters.AddWithValue("@ProductID", byID);
+
+                    DBUtils.OpenConnection(connection);
+                    MyCommand.ExecuteNonQuery();
+                    DBUtils.CloseConnection(connection);
+
+                    mainpage.FillDataGridView();
+
+                    MessageBox.Show("Product Move added!", "SUCCESS INSERTED");
+                    state = 2;
+                }
             }
             catch (SqlException se)
             {
@@ -174,14 +220,25 @@ namespace StockManagementSystem_with_Form
             {
                 DBUtils.CloseConnection(connection);
                 FillDataGridView();
-                InsertPanel.Visible = false;
-                GridPanel.Visible = true;
-                TurnBackPictureBox.Visible = true;
-                turnbackButton.Visible = true;
-                MoveTypeComboBox.Text = "";
-                MoveQuantityTextBox.Clear();
-                UnitComboBox.Text = "";
-                MoveDateTimePicker.Text = "";
+
+                if(state == 2) {
+                    InsertPanel.Visible = false;
+                    GridPanel.Visible = true;
+                    TurnBackPictureBox.Visible = true;
+                    turnbackButton.Visible = true;
+                    MoveTypeComboBox.Text = "";
+                    MoveQuantityTextBox.Clear();
+                    UnitComboBox.Text = "";
+                    MoveDateTimePicker.Text = "";
+                }
+                else if(state == 1){
+                    InsertPanel.Visible = true;
+                    GridPanel.Visible = false;
+                    TurnBackPictureBox.Visible = false;
+                    turnbackButton.Visible = false;
+                    MoveQuantityTextBox.Clear();
+
+                }
             }
         }
 

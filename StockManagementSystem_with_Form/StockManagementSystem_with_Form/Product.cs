@@ -59,14 +59,7 @@ namespace StockManagementSystem_with_Form
         public string getUnit() { return unit; }
         public void setUnit(string unit)
         {
-            if (unit != "kg" && unit != "g" && unit != "lt"
-                && unit != "km" && unit != "m" && unit != "cm"
-                && unit != "packet" && unit != "bottle")
-            {
-                this.unit = unit;
-            }
-            else
-                this.unit = "invalid";
+            this.unit = unit;
         }
 
         public int getQuantity() { return quantity; }
