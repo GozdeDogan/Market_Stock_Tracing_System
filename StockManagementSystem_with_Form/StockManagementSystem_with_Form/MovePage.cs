@@ -137,6 +137,7 @@ namespace StockManagementSystem_with_Form
                 InformationTextBox.Enabled = false;
                 MoveProductIDTextBox.Text = byID;
                 MoveProductIDTextBox.Enabled = false;
+                MoveDateTimePicker.Text = "";
 
                 turnbackButton.Visible = false;
                 TurnBackPictureBox.Visible = false;
@@ -155,7 +156,7 @@ namespace StockManagementSystem_with_Form
         {
             try
             {
-                string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity)" 
+                string sql = "INSERT into StockManagementSystemDatabase.dbo.Move_Table(MoveProductID, MoveType, MoveDate, MoveQuantity, MoveQuantityUnit)" 
                     + "values('" + MoveProductIDTextBox.Text + "','" + MoveTypeComboBox.Text + "','" + MoveDateTimePicker.Value.ToString("yyyy-MM-dd") 
                     + "','" + MoveQuantityTextBox.Text + "','" + UnitComboBox.Text + "');";
                 SqlCommand command = new SqlCommand(sql, connection);
@@ -175,6 +176,12 @@ namespace StockManagementSystem_with_Form
                 FillDataGridView();
                 InsertPanel.Visible = false;
                 GridPanel.Visible = true;
+                TurnBackPictureBox.Visible = true;
+                turnbackButton.Visible = true;
+                MoveTypeComboBox.Text = "";
+                MoveQuantityTextBox.Clear();
+                UnitComboBox.Text = "";
+                MoveDateTimePicker.Text = "";
             }
         }
 

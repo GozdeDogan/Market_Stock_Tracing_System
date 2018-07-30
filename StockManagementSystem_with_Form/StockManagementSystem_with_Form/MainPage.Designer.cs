@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.UpdateThisButton = new System.Windows.Forms.Button();
             this.MoneyUnitComboBox = new System.Windows.Forms.ComboBox();
@@ -54,23 +54,23 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.UpdateDataGridView = new System.Windows.Forms.Button();
             this.DataGridView_Products = new System.Windows.Forms.DataGridView();
-            this.UpdateSelectButton = new System.Windows.Forms.Button();
-            this.TurnBackButton = new System.Windows.Forms.Button();
-            this.stockManagementSystemDatabaseDataSet1 = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
-            this.productCardsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.product_Cards_TableTableAdapter1 = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productCardsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stockManagementSystemDatabaseDataSet1 = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSet();
+            this.UpdateSelectButton = new System.Windows.Forms.Button();
+            this.TurnBackButton = new System.Windows.Forms.Button();
+            this.product_Cards_TableTableAdapter1 = new StockManagementSystem_with_Form.StockManagementSystemDatabaseDataSetTableAdapters.Product_Cards_TableTableAdapter();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPagePicture)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Products)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productCardsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -176,7 +176,7 @@
             this.ProductUnitQuantity.Name = "ProductUnitQuantity";
             this.ProductUnitQuantity.Size = new System.Drawing.Size(182, 20);
             this.ProductUnitQuantity.TabIndex = 7;
-            this.ProductUnitQuantity.Text = "Product Unit-Quantity";
+            this.ProductUnitQuantity.Text = "Product Quantity-Unit";
             // 
             // ProductName
             // 
@@ -334,14 +334,14 @@
             this.DataGridView_Products.AllowUserToOrderColumns = true;
             this.DataGridView_Products.AutoGenerateColumns = false;
             this.DataGridView_Products.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridView_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_Products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -360,46 +360,6 @@
             this.DataGridView_Products.ShowRowErrors = false;
             this.DataGridView_Products.Size = new System.Drawing.Size(550, 184);
             this.DataGridView_Products.TabIndex = 1;
-            // 
-            // UpdateSelectButton
-            // 
-            this.UpdateSelectButton.BackColor = System.Drawing.Color.Goldenrod;
-            this.UpdateSelectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.UpdateSelectButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.UpdateSelectButton.Location = new System.Drawing.Point(12, 372);
-            this.UpdateSelectButton.Name = "UpdateSelectButton";
-            this.UpdateSelectButton.Size = new System.Drawing.Size(147, 57);
-            this.UpdateSelectButton.TabIndex = 8;
-            this.UpdateSelectButton.Text = "Update Select Product";
-            this.UpdateSelectButton.UseVisualStyleBackColor = false;
-            this.UpdateSelectButton.Click += new System.EventHandler(this.UpdateSelectButton_Click);
-            // 
-            // TurnBackButton
-            // 
-            this.TurnBackButton.BackColor = System.Drawing.Color.DarkRed;
-            this.TurnBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TurnBackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TurnBackButton.Location = new System.Drawing.Point(23, 450);
-            this.TurnBackButton.Name = "TurnBackButton";
-            this.TurnBackButton.Size = new System.Drawing.Size(127, 39);
-            this.TurnBackButton.TabIndex = 9;
-            this.TurnBackButton.Text = "Turn Back";
-            this.TurnBackButton.UseVisualStyleBackColor = false;
-            this.TurnBackButton.Click += new System.EventHandler(this.TurnBackButton_Click);
-            // 
-            // stockManagementSystemDatabaseDataSet1
-            // 
-            this.stockManagementSystemDatabaseDataSet1.DataSetName = "StockManagementSystemDatabaseDataSet";
-            this.stockManagementSystemDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productCardsTableBindingSource
-            // 
-            this.productCardsTableBindingSource.DataMember = "Product_Cards_Table";
-            this.productCardsTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet1;
-            // 
-            // product_Cards_TableTableAdapter1
-            // 
-            this.product_Cards_TableTableAdapter1.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -449,6 +409,46 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 85;
             // 
+            // productCardsTableBindingSource
+            // 
+            this.productCardsTableBindingSource.DataMember = "Product_Cards_Table";
+            this.productCardsTableBindingSource.DataSource = this.stockManagementSystemDatabaseDataSet1;
+            // 
+            // stockManagementSystemDatabaseDataSet1
+            // 
+            this.stockManagementSystemDatabaseDataSet1.DataSetName = "StockManagementSystemDatabaseDataSet";
+            this.stockManagementSystemDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // UpdateSelectButton
+            // 
+            this.UpdateSelectButton.BackColor = System.Drawing.Color.Goldenrod;
+            this.UpdateSelectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.UpdateSelectButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.UpdateSelectButton.Location = new System.Drawing.Point(12, 372);
+            this.UpdateSelectButton.Name = "UpdateSelectButton";
+            this.UpdateSelectButton.Size = new System.Drawing.Size(147, 57);
+            this.UpdateSelectButton.TabIndex = 8;
+            this.UpdateSelectButton.Text = "Update Select Product";
+            this.UpdateSelectButton.UseVisualStyleBackColor = false;
+            this.UpdateSelectButton.Click += new System.EventHandler(this.UpdateSelectButton_Click);
+            // 
+            // TurnBackButton
+            // 
+            this.TurnBackButton.BackColor = System.Drawing.Color.DarkRed;
+            this.TurnBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TurnBackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TurnBackButton.Location = new System.Drawing.Point(23, 450);
+            this.TurnBackButton.Name = "TurnBackButton";
+            this.TurnBackButton.Size = new System.Drawing.Size(127, 39);
+            this.TurnBackButton.TabIndex = 9;
+            this.TurnBackButton.Text = "Turn Back";
+            this.TurnBackButton.UseVisualStyleBackColor = false;
+            this.TurnBackButton.Click += new System.EventHandler(this.TurnBackButton_Click);
+            // 
+            // product_Cards_TableTableAdapter1
+            // 
+            this.product_Cards_TableTableAdapter1.ClearBeforeFill = true;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,8 +474,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Products)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productCardsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockManagementSystemDatabaseDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
